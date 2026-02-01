@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>周期性行业投资 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 (简化版) */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px;
+  box-shadow:
+    0 4px 20px rgba(44,36,32,0.08),
+    0 1px 4px rgba(44,36,32,0.05);
+  position: relative;
+  border-radius: 2px;
+}
+/* 纸张纹理细节 */
+.article-paper::before {
+  /* 左侧装订线孔模拟 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+  border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0;
+  width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(44,36,32,0.15);
+  position: relative;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: var(--ink-fade);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文排版 */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink-light);
+  font-weight: 300;
+  text-align: justify;
+}
+.article-content p {
+  margin-bottom: 24px;
+}
+.article-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.article-content blockquote {
+  border-left: 3px solid var(--water-blue);
+  padding-left: 18px;
+  margin: 30px 0;
+  color: var(--ink-fade);
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: sepia(0.15) contrast(0.95); /* 复古滤镜 */
+}
+.article-content ul, .article-content ol {
+  margin: 20px 0 20px 40px;
+}
+.article-content li {
+  margin-bottom: 10px;
+}
+.article-content a {
+  color: var(--water-teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--water-teal);
+}
+.article-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 底部签名区 */
+.article-footer {
+  margin-top: 60px;
+  text-align: center;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--warm-rust);
+  color: var(--warm-rust);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-12deg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="watercolor-bg"></div>
+
+<main>
+  <nav class="nav-bar">
+    <a href="index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2010.05.14</div>
+      <h1 class="article-title">周期性行业投资</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!9603" class="bvMsg">一直以来排斥周期性行业，周期性行业的复杂性和不可测性也使研究充满了挑战，但中国A股绝大部分的股票属于周期性行业，因此还是很有兴趣把周期性行业作为一个探讨的课题，希望能在不确定中找到尽量接近确定的部分。也不排除以后碰到类似巴菲特投资中石油这样高确定性的投资机会时参与其中。</p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>    投资周期性企业首先要了解其高风险性，并有充分的思想准备。06年以来波澜壮阔的大牛市和远超想象的大熊市使周期性行业的疯狂炒作和瀑布式的下跌得到再次淋漓尽致的演绎。包括万科这样的所谓蓝筹在内的大部分周期性企业的最大跌幅已经超过80%，江西铜业等近十家更超过90%。不要认为这就是结局，未来出现跌幅超过95%的股票一点都不值得惊讶。从90%跌到95%也是一次腰斩，跌幅大并非就很安全。</font></p>
+<p align="left"><font>    周期性行业景气度高峰期价量齐升，行业低谷时则相反。影响周期性行业盈利的要素主要包括产品价格、需求、资本性开支与产能利用率错位导致的额外财务费用等。其中前两个因素是主导因素。二者的波动决定了周期性企业的盈利波动。部分周期性行业的价格和需求都波幅巨大，例如有色金属、航运等，盈利容易出现极端的情况。部分价格基本稳定或波动幅度较小，需求变化较大，盈利波动性较弱，例如银行、证券。大部分周期性企业喜欢在行业景气度高峰期盲目扩张，一旦行业下滑则形成庞大的过剩产能，这些过剩产能不但不能产生效益，折旧、摊销、负债、维护还产生大量的费用，侵蚀企业的利润，因此固定成本越高的行业，产量变化引起的利润波动也越高。那些在行业景气度高峰期来临前适度控制扩张规模，行业景气度低谷后期能前瞻性地大举扩张的企业很可能是不错的投资标的。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>我把周期性行业分为消费类周期性行业和工业类周期性行业。</font></p>
+<p align="left"><font>一、消费类周期性行业</font></p>
+<p align="left"><font>    消费类周期性行业包括房地产、银行、证券、、保险、汽车、航空等，消费类周期性行业兼具了周期性行业和消费行业的特性。它们的终端客户大部分是个人消费者（银行还包括企业），虽然品牌忠诚度较低，但仍具有一定的品牌效应。需求虽然出现波动但总体向上，而且在中国基本上是刚刚启动的行业，市场前景巨大。除汽车、航空外，属于较轻资产型企业，行业景气度低谷时规模的弹性较大。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>1、银行</font></p>
+<p align="left"><font>银行产品价格相对较稳定，需求波动也较小，其中零售占比大的银行周期性更加弱化。银行业的盈利能力在几个行业中比较稳定，但中国银行业未来将面对利差逐步缩小和可能到来的利率市场化，还有房地产及金融风暴导致大量企业倒闭带来的呆坏账爆发的可能性。</font></p>
+<p align="left"><font>2、房地产</font></p>
+<p align="left"><font>房地产价格和需求虽然波动较大，但波动速度和幅度小于工业品行业，而且产品具有多样性、差异化的特性，某些地区的产品更具有资源垄断的特征。龙头企业具有较好的抗风险能力，行业低谷可以带来低成本并购的机会，行业需求刚性和确定性较高。</font></p>
+<p align="left"><font>3、证券</font></p>
+<p align="left"><font>证券业的价格具有相对的稳定性，需求波动性很高。证券业比较特殊的是投资者身处行业，周期转换比较明显，通过估值和成交量等指标比较容易地判断出行业的拐点。</font></p>
+<p align="left"><font>4、保险</font></p>
+<p align="left"><font>保险实际不属于周期性行业，但投资收益的存在，会呈现阶段的强周期性，中国保险主业的高速增长使波动性弱化。如果不是遇上大牛市或大熊市，保险业的周期性并不明显。应该注意的是，在充分竞争的市场环境中保险业是容易发生价格战的行业，为了获得暂时的市场份额和领先地位，可能出现非理性的保单设计，保单大部分都延续数年、数十年，坏的结果可能很长时间后才显现，投资者难以评估其中的风险。现阶段人寿和平安仍然处于寡头垄断竞争的地位，随着政策管制的放宽，众多的外资保险不断进入中国，外资保险市场份额逐步扩大，市场竞争将越来越激烈。</font></p>
+<p align="left"><font>5、汽车</font></p>
+<p align="left"><font>汽车业车型换代迅速，技术更新较快，属于重资产型企业，行业竞争激烈，对油价敏感，影响利润的因素较多，盈利的判断比较困难。而且即使景气度高峰期不同企业的盈利能力各异，且提升幅度未必很高。属于糟时可能很糟，好时未必好的行业。</font></p>
+<p align="left"><font>6、航空</font></p>
+<p align="left"><font>航空业竞争激烈，恶性价格竞争经常出现（两到三折的价格随处可见），固定成本高昂，资本性开支庞大，运营成本随油价和汇率巨幅波动，航空业的行业特性使其盈利能力低下。</font></p>
+<p align="left"><font>    房地产、银行、证券、保险这四个行业与日常生活密切相关，投资者可以比较容易直观地感受行业的冷暖，而且影响盈利的因素比较简单，相对而言更具可预测性（银行与宏观经济的密切性增加了判断的难度），是投资周期性行业较好的选择。汽车和航空的行业特性决定了它们不是好的投资标的。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>二、工业类周期性行业</font></p>
+<p align="left"><font>    工业类周期性行业包括有色金属、钢铁、化工、水泥、电力、煤炭、石化、工程机械、航运、装备制造等。这些行业与宏观经济相关度很高，宏观经济复杂多变，基本不可预测（众多著名经济学家的预测往往也是错误的）。而且产品价格波幅巨大、下跌迅猛（例如最近短短两三个月航运价格急跌90%，有色金属也是跌幅巨大），需求变化迅速而且周期长，有时投资者根本没有反应的时间。产品成本受原材料影响明显，基本上属于重资产型企业，投入产出周期长，行业景气度高峰期大量的资本支出带来庞大的折旧和摊销，利润对产量的变化极为敏感，行业低谷时规模调整弹性小，影响盈利的不可测因素众多，所以盈利呈现高度的波动性，判断周期拐点的难度也较高。另外石化、电力、石油等受政府价格管制的行业存在盈利意外下滑的可能性。</font></p>
+<p align="left"><font>    工业品行业巨大的波动也带来高收益的机会，只是这种机会不是普通投资者容易能把握的。特别是一些长周期行业如有色金属，踏错节奏也许不是几年而是十几年才能解套。然而正是有色、石油、煤炭、黄金、钢铁这类资源性的上游行业，产品单一，同质性强，大宗商品期货市场或商品价格指数对产品价格趋势和行业景气度有直观明确的指导性（航运也有类似的指数），根据产品价格区间判断行业拐点更容易。价格指数通常有一定的运行区间，虽然随着时间的推移区间会有所改变，但只要采集足够长周期的数据，就可以得出大概的规律。上游行业的利润波动性更大，风险也更高。</font></p>
+<p align="left"><font>中、下游行业产品种类纷繁复杂，不同历史时期各细分子行业的情况迥异，使行业周期的判断更加困难。由于产品的差异性，没有简单直观的价格指数作为判断依据，更依赖宏观经济和各子行业的具体情况。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>    周期性行业的周期循环常常沿着产业链按一定的顺序地依次发生，通常复苏始于汽车、房地产、基础设施建设、机械、装备制造等下游行业，然后传导至化纤、非金属矿制品、有色金属冶炼压延、黑色金属冶炼压延等中游的加工制造业，最后是而上游的有色、石油、煤炭、石化等行业。衰退也是从下游行业开始，依次传导至中游、上游行业。历史背景不同，周期循环并非简单的重复，运行规律也不是一成不变，不能简单地套用历史经验进行对周期拐点的判断，而应根据经验具体情况具体分析。</font></p>
+<p align="left"><font>我把较低的市净率（低于2，强周期性的低于1）和较高的市盈率作为买入周期性企业的必要条件，因为这才是企业实际估值较低、行业处于低谷的时候。对于有价格指数的行业，可以把价格指数结合市净率及盈利水平，大致判断出行业对应的运行阶段。但即使指标在低位运行，也并非就可以马上买入，仍然需要一段较长的观察时间，因为指标有可能较大幅度地突破历史区间。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>下面是一些投资周期性行业的原则和技巧：</font></p>
+<p align="left"><font color="#ff0000">1、周期性行业的估值几乎是不可能完成的任务，试图通过估值为周期性企业确定安全边际往往徒劳无功。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>2、站在长期的角度看，常常是市盈率越低实际估值反而越高，而高市盈率反而可能是低估值区域。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font color="#ff0000">3、根据行业景气度判断买卖时机比依据估值更可靠，行业景气度高峰期是最危险的时候，高峰期过后的一两年肯定不是好的买入时机。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>4、对周期性估值更有参考价值的是市净率而不是市盈率。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>5、不能以股价跌幅作为买入依据，周期性行业的跌幅往往远超想象。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font color="#ff0000">6、投资周期性行业需要极高的安全性和确定性，特别是强周期性行业。即使盈利大幅放缓或者出现负增长也不是好的买点，多数企业出现亏损或倒闭才会较安全。现在大部分的周期性行业还没出现后一种情况。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font color="#ff0000">7、没有丰富的行业知识和对行业的深入理解前，不要碰。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>8、不要高估自己的能力圈，不要想当然地自创一些指标作为买入依据。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>9、周期性企业的股价常常是轮回的，或跌幅把大部分的涨幅吞没，阶段性持有是最优策略，不能超长期持有。</font></p>
+<p align="left"><font><font> </font></font></p>
+<p align="left"><font>10、不同行业特性差异很大，不能套用其他行业的经验作为判断依据。</font></p>
+<p align="left"><font> </font></p>
+<p align="left"><font>11、投资时必须选择行业龙头企业，中小型企业很可能在行业重新回暖前已经倒下，即使能生存也没有竞争优势。</font></p>
+<p align="left"><font> </font></p>
+<p align="left"><font>12、未来某些行业可能出现产业国际转移。船舶、钢铁历史上经历过数次国际转移，远期其他行业也可能出现这种情况，这是对行业毁灭性的因素。</font></p>
+<p align="left"><font> </font></p>
+<p align="left"><font color="#ff0000">13、投资周期性行业更需要战略视野，从产业周期的角度选择买卖时机，而不要在乎阶段性的投资机会。</font></p>
+<p align="left"><font> </font></p>
+<p align="left"><font>14、事后或看别人往往很简单，但真正准确地预判则是极其困难的事情。</font></p>
+<div></div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>

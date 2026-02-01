@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>差别 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 (简化版) */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px;
+  box-shadow:
+    0 4px 20px rgba(44,36,32,0.08),
+    0 1px 4px rgba(44,36,32,0.05);
+  position: relative;
+  border-radius: 2px;
+}
+/* 纸张纹理细节 */
+.article-paper::before {
+  /* 左侧装订线孔模拟 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+  border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0;
+  width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(44,36,32,0.15);
+  position: relative;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: var(--ink-fade);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文排版 */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink-light);
+  font-weight: 300;
+  text-align: justify;
+}
+.article-content p {
+  margin-bottom: 24px;
+}
+.article-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.article-content blockquote {
+  border-left: 3px solid var(--water-blue);
+  padding-left: 18px;
+  margin: 30px 0;
+  color: var(--ink-fade);
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: sepia(0.15) contrast(0.95); /* 复古滤镜 */
+}
+.article-content ul, .article-content ol {
+  margin: 20px 0 20px 40px;
+}
+.article-content li {
+  margin-bottom: 10px;
+}
+.article-content a {
+  color: var(--water-teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--water-teal);
+}
+.article-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 底部签名区 */
+.article-footer {
+  margin-top: 60px;
+  text-align: center;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--warm-rust);
+  color: var(--warm-rust);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-12deg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="watercolor-bg"></div>
+
+<main>
+  <nav class="nav-bar">
+    <a href="index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2009.02.08</div>
+      <h1 class="article-title">差别</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!5636" class="bvMsg">
+<p align="left"><font>    每年收益一次的是高管，</font></p>
+<p align="left"><font>    每月都有收益的是员工，</font></p>
+<p align="left"><font>    每天都有收益的是卖菜的，</font></p>
+<p align="left"><font>    干活就有收益的是零工。 <br />    </font></p>
+<p align="left"><font>    收益的大小与机会的多少成反比，与结算周期成正比。每天都有的机会收益一定很小，遍地都是的机会是留给收破烂的。 <br />   </font></p>
+<p align="left"><font>    </font><font><font color="#ff0000">越大的资金，越高的收益，它们的机会其实不多。找到了或等到了那样的机会，它们其实只出动一次。 <br /></font>   </font></p>
+<p align="left"><font>    眼花缭乱，到处都是机会，市场上充斥着喧哗与骚动，在其中大呼小叫汗流浃背的身影，都是散户。争先恐后抢着埋头拾钱的，迟早被拾了。 <br /></font></p>
+<p align="left"><font>    穷人和富人最根本的区别是，穷人每天都在找机会，一天没有收益他就会惶然不安，他最幸福的日子就是每天都能进点，所谓的细水常流。而</font><font><font color="#ff0000">富人知道，机会其实并不多。从时间上不多，所以经常要等；从空间上也不多，所以要耐心寻找。 <br /></font>   </font></p>
+<p align="left"><font>    要想有富人的心态，先改变内心的结算周期，不要为每天都有的小收益沾沾自喜，不要为找不到小收益惴惴不安。<br /></font></p>
+<p align="left"><font>   </font></p>
+<p align="left"><font>    穷人之所以穷，是因为小钱来的很快。因为总是能够很快地来点小钱，所以总是没有大钱。穷人眼尖手快，所以经常表现出聪明，尽管很小；<font color="#ff0000">富人动作迟缓，经常显得笨拙，事后才知道那是若愚。</font>穷人不吃小亏，经常占些小便宜；<font color="#ff0000">富人经常吃些小亏，占的都是大便宜。</font></font></p>
+</p>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>

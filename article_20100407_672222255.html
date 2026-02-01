@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>最差的冠军 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 (简化版) */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px;
+  box-shadow:
+    0 4px 20px rgba(44,36,32,0.08),
+    0 1px 4px rgba(44,36,32,0.05);
+  position: relative;
+  border-radius: 2px;
+}
+/* 纸张纹理细节 */
+.article-paper::before {
+  /* 左侧装订线孔模拟 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+  border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0;
+  width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(44,36,32,0.15);
+  position: relative;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: var(--ink-fade);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文排版 */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink-light);
+  font-weight: 300;
+  text-align: justify;
+}
+.article-content p {
+  margin-bottom: 24px;
+}
+.article-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.article-content blockquote {
+  border-left: 3px solid var(--water-blue);
+  padding-left: 18px;
+  margin: 30px 0;
+  color: var(--ink-fade);
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: sepia(0.15) contrast(0.95); /* 复古滤镜 */
+}
+.article-content ul, .article-content ol {
+  margin: 20px 0 20px 40px;
+}
+.article-content li {
+  margin-bottom: 10px;
+}
+.article-content a {
+  color: var(--water-teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--water-teal);
+}
+.article-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 底部签名区 */
+.article-footer {
+  margin-top: 60px;
+  text-align: center;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--warm-rust);
+  color: var(--warm-rust);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-12deg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="watercolor-bg"></div>
+
+<main>
+  <nav class="nav-bar">
+    <a href="index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2010.04.07</div>
+      <h1 class="article-title">最差的冠军</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!8824" class="bvMsg">
+<p>    <font>我的一个同学，别人总说她笨，说她不会有什么出息。在班里，她学习是倒数的，老师怀疑她智力有问题，因为她也格外地用功，她并不是个坏学生，是最用功的一个，可就是什么都搞不好。可是喜欢刺绣，她绣的花栩栩如生，老师说她，你看来只能当一个女工了。</font></p>
+<p><font>　　她果真没有考上大学。送我们上大学走时，她自卑地说，我永远没有上大学的机会了，以后，就好好地绣花。</font></p>
+<p><font>　　十年之后，当我们再看到她时，她是一家刺绣公司的老总，身价千万，她笑着跟我们说，当年，我用一颗最卑微的心来对待生活，努力地绣花，努力让自己绣出的花最好看，我觉得，每个人都会有属于自己的路。</font></p>
+<p><font>　　是啊，她不是最出色的人，可她能用一颗卑微的心来对待生活，不放弃努力，在努力中找到自己的机会。</font></p>
+<p><font>　　记得不久前电视播放一次模特大赛，我起初并不关注但出现小小的戏剧化情节时，我紧紧地盯住了电视机。</font></p>
+<p><font>　　决赛模特共有2个。当第一轮比赛之后，主持人说，&quot;这一轮，我们评一个最差模特，所谓最差，就是她的综合气质，她的着装和她的台步都是最差。&quot;</font></p>
+<p><font>　　这真是件尴尬的事情。以往大赛总是评前三，或者最上镜奖，最有人气奖，最佳皮肤奖，但从来没有一个大赛会评选最差模特奖&#8211;这对模特而言简直是恐怖。</font></p>
+<p><font>　　1分钟后，最差模特评选了出来，当场公布，我为那个女孩子难过，她是14号。</font></p>
+<p><font>　　主持人说，请14号往前走一步。</font></p>
+<p><font>　　我看到她走了出来，如果是我，也许会哭，但她始终面带微笑。评委们开始评头论足，说她表现如何差强人意，说她着装搭配不太合理，她静静听着，点头，偶尔会说，我知道了，下次一定注意。我真替她难过，可这个年轻的女孩，一直镇定地微笑着听着。</font></p>
+<p><font>　　其他的模特，有的居然笑起来，是一种幸灾乐祸的笑。少了一个对手。她们的竞争会轻松一些，而这个女孩子，坦然面对着&quot;最差&quot;。以微笑来接受评委们的意见。</font></p>
+<p><font>　　接着是第二轮第三轮的比赛。我以为她会自暴自弃，反正是最次了，可她的表现一次比一次好，到最后，你能想得到比赛结果吗？她居然夺得了模特大赛的冠军！</font></p>
+<p><font>　　事后有记者问她，怎么能顶住那么大的压力对待评委们的责难，她笑着说，<font color="#ed1c24">因为我始终有一颗卑微的心，成功了不会骄傲，失败了继续努力。</font></font></p>
+<p><font>　　事后她才知道，&quot;评选最差&quot;是评委们的一个陷阱，他们要考察心中最好的模特心理素质如何，如果她过不了这一关，&quot;冠军&quot;会易手他人。正是那颗卑微的心，让她赢得了最后的胜利。</font></p>
+<p><font>　<font color="#ed1c24">　多么难得的啊，得意时不狂傲，失意时不绝望，用一颗卑微的心对待生活，努力地往前奔，能做到这一步，应该是人生的另一个境界吧。<br /></font></font></p>
+<div></div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>

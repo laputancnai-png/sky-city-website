@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>孩子们应该知道的基本金融准则 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 (简化版) */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px;
+  box-shadow:
+    0 4px 20px rgba(44,36,32,0.08),
+    0 1px 4px rgba(44,36,32,0.05);
+  position: relative;
+  border-radius: 2px;
+}
+/* 纸张纹理细节 */
+.article-paper::before {
+  /* 左侧装订线孔模拟 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+  border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0;
+  width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(44,36,32,0.15);
+  position: relative;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: var(--ink-fade);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文排版 */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink-light);
+  font-weight: 300;
+  text-align: justify;
+}
+.article-content p {
+  margin-bottom: 24px;
+}
+.article-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.article-content blockquote {
+  border-left: 3px solid var(--water-blue);
+  padding-left: 18px;
+  margin: 30px 0;
+  color: var(--ink-fade);
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: sepia(0.15) contrast(0.95); /* 复古滤镜 */
+}
+.article-content ul, .article-content ol {
+  margin: 20px 0 20px 40px;
+}
+.article-content li {
+  margin-bottom: 10px;
+}
+.article-content a {
+  color: var(--water-teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--water-teal);
+}
+.article-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 底部签名区 */
+.article-footer {
+  margin-top: 60px;
+  text-align: center;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--warm-rust);
+  color: var(--warm-rust);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-12deg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="watercolor-bg"></div>
+
+<main>
+  <nav class="nav-bar">
+    <a href="index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2010.10.13</div>
+      <h1 class="article-title">孩子们应该知道的基本金融准则</h1>
+    </header>
+
+    <div class="article-content">
+      <p>在我们的中小学教育中缺失金融理财教育，这实际上是孩子们的不幸。为此，普及金融理财知识当务之急。罗恩·米伦坎普先生很早就成立了自己的基金公司，在过去的10年中他掌管的基金平均回报率是16%。米伦坎普非常重视普及理财教育。他曾说：“我常常看到六七十岁的人犯基本的金融错误，虽然犯这种错误是不应该的。我们都需要别人来提醒我们那些基本知识，即使我们已经知道它们。”因此，米伦坎普总结出让孩子们应该知道的22条基本金融准则。虽然这些准则是讲给孩子们的，但是这些准则无论对谁都有用。</p>
+<p>    1、天下没有免费的午餐，当然也没有免费的收入。</p>
+<p>    2、生活的必需品是便宜的，只有奢侈品是昂贵的。</p>
+<p>    3、不好的产品永远是不好的买卖。不要买那些服务记录不佳的车和家电，更不要买屋基有裂缝的房子。</p>
+<p>    4、如果价格太高，好产品也可能是坏交易。如何才能知道什么价格合适你？最好四处看看，同时还要愿意放弃“便宜货”。</p>
+<p>    5、保险的目的是为了防止金融灾难，任何非金融的损失都不能通过保险得到补救。</p>
+<p>    6、任何非灾难性的损失都不需要保险。</p>
+<p>    7、金融产品不过是写在纸上的协议而已。但是不管怎样，还是要读，一遍一遍地读，直到理解了它们。</p>
+<p>    8、借钱的代价是利息与担忧。因此要确保所有的借款不会达到让你担忧的程度。不要借钱去买会贬值的产品。否则，会两头亏损。</p>
+<p>    9、不要依赖资产的增值。如果价格太高，请耐心等待。</p>
+<p>    10、任何协议都有两方。对方都在为自己工作。弄明白他是为你谋求利益还是在损害你的利益。永远要做更深层次的检查，，并做跟踪检查。</p>
+<p>    11、有意做出的假设不会伤害你。理所当然的那些假设将会要你的命。永远要检查你所做的那些假设背后的假设。</p>
+<p>    12、复杂的买卖可能是一个不好的买卖。</p>
+<p>    13、你理解不了的买卖就是不好的买卖。如果销售方不能或不用你所能理解的词语向你解释，不要买他的那些产品或者服务。</p>
+<p>    14、不要混淆收入与财富。收入会随着解雇通知或利率变化而结束。</p>
+<p>    15、不要依赖社会保障。你从社会保障领到的福利将是你爷爷奶奶现在领取的社会保障福利的很少的一部分。</p>
+<p>    16、人们往往把通货膨胀看做价格上涨。不对，它是货币价值的下降。</p>
+<p>    17、不存在担保，只存在担保者。当听到“它有担保”时，你应该问：“是谁担保的？”</p>
+<p>    18、当你对规则哪怕做一点点改变时，你将大幅改变游戏。</p>
+<p>    19、寻求方便常常代价昂贵，忽视则是致命的。</p>
+<p>    20、收集品是风行一时的时尚。它们忽悠来忽悠去。当每个人都知道某项东西是可收集的时候，游戏就已经结束了。</p>
+<p>    21、你不可能通过花钱而让自己变得富有。没花的钱比你赚到的钱更有价值，而且是税后的。</p>
+<p>    22、投资于股权或全回报基金。股权投资带来的长期复合收益可能会非常惊人。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>

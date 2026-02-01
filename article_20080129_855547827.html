@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>沉淀成本 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 (简化版) */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none;
+  color: var(--ink-light);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px;
+  box-shadow:
+    0 4px 20px rgba(44,36,32,0.08),
+    0 1px 4px rgba(44,36,32,0.05);
+  position: relative;
+  border-radius: 2px;
+}
+/* 纸张纹理细节 */
+.article-paper::before {
+  /* 左侧装订线孔模拟 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+  border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0;
+  width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(44,36,32,0.15);
+  position: relative;
+}
+.article-date {
+  font-size: 0.9rem;
+  color: var(--ink-fade);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文排版 */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--ink-light);
+  font-weight: 300;
+  text-align: justify;
+}
+.article-content p {
+  margin-bottom: 24px;
+}
+.article-content strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.article-content blockquote {
+  border-left: 3px solid var(--water-blue);
+  padding-left: 18px;
+  margin: 30px 0;
+  color: var(--ink-fade);
+  font-style: italic;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  filter: sepia(0.15) contrast(0.95); /* 复古滤镜 */
+}
+.article-content ul, .article-content ol {
+  margin: 20px 0 20px 40px;
+}
+.article-content li {
+  margin-bottom: 10px;
+}
+.article-content a {
+  color: var(--water-teal);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--water-teal);
+}
+.article-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 底部签名区 */
+.article-footer {
+  margin-top: 60px;
+  text-align: center;
+}
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--warm-rust);
+  color: var(--warm-rust);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-12deg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="watercolor-bg"></div>
+
+<main>
+  <nav class="nav-bar">
+    <a href="index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2008.01.29</div>
+      <h1 class="article-title">沉淀成本</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!2971" class="bvMsg">
+<div><font size="2">金融市场发生危机，股票市场大跌的时刻，一般人选择退出，通常的做法是首先选择卖出赚钱的股票，留下亏损的股票。但16年的从业经验告诉我，正确的做法应该是卖出亏损的股票，留下赚钱的股票。选择补仓，也要补大跌中仍然有盈利的股票。为什么？ </font></p>
+<div><font size="2">    2008年1月19日，教我们管理会计的许定波教授在讲管理会计的相关分析中“相关收入、相关成本和决策过程”一节中，提到了“沉没成本”，并用股票投资比喻。我觉得非常有道理，经济学中有许多概念不仅有利于经营企业，而且对于认识投资，甚至对认识人生也是有益的。<font color="#000000">在现代</font><font><font color="#000000">经济学和商业决策制定过程中，会用到“沉没成本(Sunk Cost)”（或称沉淀成本）的概念，</font></font><font><font color="#000000">所谓“沉没成本”是指那些根本不可能再为企业带来任何利润的资本投入。投入得越多,损失越严重。从<font><font color="#000000">经济学</font></font></font><font color="#000000">的观点来看,对于那些纯粹是“沉没成本”的企业,不但不应该再有任何的投入,而且应该要通过兼并、破产等方式坚决关闭。</font></font></font></div>
+<div><font size="2">    曾有人用一个收藏古董老人的故事来释疑沉没成本的深刻含义。说是有一个老人特别喜欢收集各种古董，一旦碰到心爱的古董，无论花费多少钱都要想方设法地买下来。有一天，他在古董市场上发现了一件向往已久的古代瓷瓶，花了很高的价钱把它买了下来。他把这个宝贝绑在自行车后座上，兴高采烈地骑车回家。谁知由于瓷瓶绑得不牢靠，在途中“咣当”一声从自行车后座上滑落下来以后摔得粉碎。这位老人听到清脆的响声后居然连头也没回继续向前骑车。这时，路边有热心人对他大声喊道：“老人家，你的瓷瓶摔碎了!”老人仍然是头也没回地说：“摔碎了吗?听声音一定是摔得粉碎，无可挽回了!”不一会儿，老人家的背影消失在了茫茫人海中。如果这种事情放到一般人的身上又会是怎样呢?不少人一定会从自行车上跳将下来，对着已经化为碎片的瓷瓶捶胸顿足，扼腕痛惜，有的人会好长时间精神难以恢复。</font></div>
+<div>
+<p><font size="2">    许定波教授，说他在香港科技大学会计系教书的时候，有一个教授在27元港币买了香港人俗称的“8号”电讯盈科，该股跌到15元的时候，那个教授请教他，他通过研究和分析告诉该教授，电讯盈科不值这么多钱，他失去的是“沉没成本”，劝该教授卖掉。该教授反应激烈：“卖掉后，我的<font face="宋体">血汗钱不都没了。”后来电讯盈科差不多跌到相当于1元港币的时候，该教授卖出了股票。做投资有许多人计算他们的财富，记忆停留的永远是他们曾经达到的最辉煌的那一刻，常将某一天的最高市值视为已到手的收益，然后，以那一刻计算他的得失。变化的市值与最高市值相比难免心态失衡。投资要过财富观，过去的市值都属于“沉没成本”。有的人天天看自己账户上市值的变化，其实这没有任何意义，更容易唤起一种心里错觉，换得患失。做投资永远最重要的是未来，永远最重要的是投资的企业有没有更好的未来。无论牛市还是熊市，每一刻我们该反思的都是我当初以及现在的决策是否正确?！</font> </font></p>
+<p><font face="宋体" size="2">    无论投资还是人生，我们总难免走过一些弯路，经历一些难以承受的挫折，如果利用沉没成本的概念来认识这些事，我们可能会赢得一种更为积极的人生!对投资而言，如果一笔投资无论做出何种选择都不能收回,具有理性的人只能忽略它。因此，无论此刻我们的处境是艰难还是畅顺。真正有意义的是如菲利普.A.费雪所说的：“真正要紧的，是不要放弃在未来会大幅度增值的投资。”<br /></font></div>
+</div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+
+</body>
+</html>
