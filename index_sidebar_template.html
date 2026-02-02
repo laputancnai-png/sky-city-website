@@ -97,7 +97,7 @@ main { position: relative; z-index: 2; }
   position: relative;
 }
 
-/* ── 侧边栏 (时间轴 - 优化后) ── */
+/* ── 侧边栏 (时间轴) ── */
 .sidebar {
   width: 180px;
   flex-shrink: 0;
@@ -275,6 +275,33 @@ main { position: relative; z-index: 2; }
 /* Footer */
 footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-size: 0.75rem; letter-spacing: 0.2em; opacity: 0.8; }
 
+/* ── 用户状态栏 (右上角) ── */
+.auth-bar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 10;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+.auth-link {
+  text-decoration: none;
+  color: var(--ink-fade);
+  margin-left: 15px;
+  transition: color 0.3s;
+  padding-bottom: 2px;
+  border-bottom: 1px dashed transparent;
+}
+.auth-link:hover {
+  color: var(--warm-rust);
+  border-bottom-color: var(--warm-rust);
+}
+.auth-user {
+  color: var(--ink);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
 @media (max-width: 800px) {
   .content-wrapper { flex-direction: column; gap: 30px; }
   .sidebar { width: 100%; padding-bottom: 20px; border-bottom: 1px dashed rgba(44,36,32,0.2); }
@@ -293,6 +320,8 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
 </style>
 </head>
 <body>
+
+<div class="auth-bar">{{AUTH_LINKS}}</div>
 
 <div class="watercolor-sky"><div class="wc-layer wc-layer--1"></div><div class="wc-layer wc-layer--2"></div></div>
 
