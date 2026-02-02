@@ -342,61 +342,1006 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
           <button class="timeline-btn" onclick="resetFilter()">↺ 时光索引</button>
         </div>
         <ul class="timeline-list">
-          
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2026', this)">2026</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2026','02',this)">2月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2025', this)">2025</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2025','06',this)">6月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2023', this)">2023</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2023','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2023','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2023','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2023','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2023','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2023','07',this)">7月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2022', this)">2022</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2022','09',this)">9月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2021', this)">2021</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2021','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2021','02',this)">2月</li>
+        <li class="month-item" onclick="filterByMonth('2021','01',this)">1月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2020', this)">2020</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2020','12',this)">12月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2019', this)">2019</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2019','06',this)">6月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2018', this)">2018</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2018','05',this)">5月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2017', this)">2017</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2017','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2017','09',this)">9月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2016', this)">2016</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2016','03',this)">3月</li>
+        <li class="month-item" onclick="filterByMonth('2016','01',this)">1月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2015', this)">2015</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2015','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2015','08',this)">8月</li>
+      </ul>
+    </li>
+    <li class="year-item">
+      <span class="year-label" onclick="filterByYear('2012', this)">2012</span>
+      <ul class="month-list">
+        <li class="month-item" onclick="filterByMonth('2012','04',this)">4月</li>
+      </ul>
+    </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2011', this)">2011</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2011', '06', this)">06月</li><li class="month-item" onclick="filterByMonth('2011', '05', this)">05月</li><li class="month-item" onclick="filterByMonth('2011', '03', this)">03月</li><li class="month-item" onclick="filterByMonth('2011', '01', this)">01月</li>
+        <li class="month-item" onclick="filterByMonth('2011','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2011','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2011','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2011','06',this)">6月</li>
+        <li class="month-item" onclick="filterByMonth('2011','05',this)">5月</li>
+        <li class="month-item" onclick="filterByMonth('2011','03',this)">3月</li>
+        <li class="month-item" onclick="filterByMonth('2011','02',this)">2月</li>
+        <li class="month-item" onclick="filterByMonth('2011','01',this)">1月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2010', this)">2010</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2010', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2010', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2010', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2010', '09', this)">09月</li><li class="month-item" onclick="filterByMonth('2010', '08', this)">08月</li><li class="month-item" onclick="filterByMonth('2010', '07', this)">07月</li><li class="month-item" onclick="filterByMonth('2010', '06', this)">06月</li><li class="month-item" onclick="filterByMonth('2010', '05', this)">05月</li><li class="month-item" onclick="filterByMonth('2010', '04', this)">04月</li><li class="month-item" onclick="filterByMonth('2010', '03', this)">03月</li><li class="month-item" onclick="filterByMonth('2010', '02', this)">02月</li><li class="month-item" onclick="filterByMonth('2010', '01', this)">01月</li>
+        <li class="month-item" onclick="filterByMonth('2010','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2010','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2010','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2010','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2010','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2010','07',this)">7月</li>
+        <li class="month-item" onclick="filterByMonth('2010','06',this)">6月</li>
+        <li class="month-item" onclick="filterByMonth('2010','05',this)">5月</li>
+        <li class="month-item" onclick="filterByMonth('2010','04',this)">4月</li>
+        <li class="month-item" onclick="filterByMonth('2010','03',this)">3月</li>
+        <li class="month-item" onclick="filterByMonth('2010','02',this)">2月</li>
+        <li class="month-item" onclick="filterByMonth('2010','01',this)">1月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2009', this)">2009</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2009', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2009', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2009', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2009', '09', this)">09月</li><li class="month-item" onclick="filterByMonth('2009', '08', this)">08月</li><li class="month-item" onclick="filterByMonth('2009', '07', this)">07月</li><li class="month-item" onclick="filterByMonth('2009', '06', this)">06月</li><li class="month-item" onclick="filterByMonth('2009', '05', this)">05月</li><li class="month-item" onclick="filterByMonth('2009', '04', this)">04月</li><li class="month-item" onclick="filterByMonth('2009', '03', this)">03月</li><li class="month-item" onclick="filterByMonth('2009', '02', this)">02月</li><li class="month-item" onclick="filterByMonth('2009', '01', this)">01月</li>
+        <li class="month-item" onclick="filterByMonth('2009','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2009','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2009','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2009','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2009','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2009','07',this)">7月</li>
+        <li class="month-item" onclick="filterByMonth('2009','06',this)">6月</li>
+        <li class="month-item" onclick="filterByMonth('2009','05',this)">5月</li>
+        <li class="month-item" onclick="filterByMonth('2009','04',this)">4月</li>
+        <li class="month-item" onclick="filterByMonth('2009','03',this)">3月</li>
+        <li class="month-item" onclick="filterByMonth('2009','02',this)">2月</li>
+        <li class="month-item" onclick="filterByMonth('2009','01',this)">1月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2008', this)">2008</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2008', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2008', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2008', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2008', '09', this)">09月</li><li class="month-item" onclick="filterByMonth('2008', '08', this)">08月</li><li class="month-item" onclick="filterByMonth('2008', '07', this)">07月</li><li class="month-item" onclick="filterByMonth('2008', '06', this)">06月</li><li class="month-item" onclick="filterByMonth('2008', '05', this)">05月</li><li class="month-item" onclick="filterByMonth('2008', '04', this)">04月</li><li class="month-item" onclick="filterByMonth('2008', '03', this)">03月</li><li class="month-item" onclick="filterByMonth('2008', '02', this)">02月</li><li class="month-item" onclick="filterByMonth('2008', '01', this)">01月</li>
+        <li class="month-item" onclick="filterByMonth('2008','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2008','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2008','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2008','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2008','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2008','07',this)">7月</li>
+        <li class="month-item" onclick="filterByMonth('2008','06',this)">6月</li>
+        <li class="month-item" onclick="filterByMonth('2008','05',this)">5月</li>
+        <li class="month-item" onclick="filterByMonth('2008','04',this)">4月</li>
+        <li class="month-item" onclick="filterByMonth('2008','03',this)">3月</li>
+        <li class="month-item" onclick="filterByMonth('2008','02',this)">2月</li>
+        <li class="month-item" onclick="filterByMonth('2008','01',this)">1月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2007', this)">2007</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2007', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2007', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2007', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2007', '09', this)">09月</li><li class="month-item" onclick="filterByMonth('2007', '07', this)">07月</li><li class="month-item" onclick="filterByMonth('2007', '04', this)">04月</li><li class="month-item" onclick="filterByMonth('2007', '03', this)">03月</li>
+        <li class="month-item" onclick="filterByMonth('2007','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2007','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2007','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2007','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2007','07',this)">7月</li>
+        <li class="month-item" onclick="filterByMonth('2007','04',this)">4月</li>
+        <li class="month-item" onclick="filterByMonth('2007','03',this)">3月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2006', this)">2006</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2006', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2006', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2006', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2006', '08', this)">08月</li><li class="month-item" onclick="filterByMonth('2006', '07', this)">07月</li><li class="month-item" onclick="filterByMonth('2006', '06', this)">06月</li><li class="month-item" onclick="filterByMonth('2006', '04', this)">04月</li><li class="month-item" onclick="filterByMonth('2006', '01', this)">01月</li>
+        <li class="month-item" onclick="filterByMonth('2006','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2006','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2006','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2006','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2006','07',this)">7月</li>
+        <li class="month-item" onclick="filterByMonth('2006','06',this)">6月</li>
+        <li class="month-item" onclick="filterByMonth('2006','04',this)">4月</li>
+        <li class="month-item" onclick="filterByMonth('2006','01',this)">1月</li>
       </ul>
     </li>
     <li class="year-item">
       <span class="year-label" onclick="filterByYear('2005', this)">2005</span>
       <ul class="month-list">
-        <li class="month-item" onclick="filterByMonth('2005', '12', this)">12月</li><li class="month-item" onclick="filterByMonth('2005', '11', this)">11月</li><li class="month-item" onclick="filterByMonth('2005', '10', this)">10月</li><li class="month-item" onclick="filterByMonth('2005', '09', this)">09月</li><li class="month-item" onclick="filterByMonth('2005', '08', this)">08月</li><li class="month-item" onclick="filterByMonth('2005', '07', this)">07月</li>
+        <li class="month-item" onclick="filterByMonth('2005','12',this)">12月</li>
+        <li class="month-item" onclick="filterByMonth('2005','11',this)">11月</li>
+        <li class="month-item" onclick="filterByMonth('2005','10',this)">10月</li>
+        <li class="month-item" onclick="filterByMonth('2005','09',this)">9月</li>
+        <li class="month-item" onclick="filterByMonth('2005','08',this)">8月</li>
+        <li class="month-item" onclick="filterByMonth('2005','07',this)">7月</li>
       </ul>
     </li>
-        </ul>
+</ul>
       </div>
     </aside>
 
-    <!-- 内容列表 -->
     <section class="diary-section">
       <div class="diary-header reveal">
         <h2 id="list-title">全部日志</h2>
       </div>
       <div class="diary-grid" id="diary-grid">
+
+<!-- FB-IMPORT-START -->
+    <div class="diary-card card--blue reveal" 
+         data-year="2025" 
+         data-month="06"
+         onclick="window.location.href='articles/article_fb_20250618_222322_2.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2025.06.18</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos F1 Place: Almaden Valley, San Jose, California (37.221430560866, -121.86275140779) Address: 5575 Dartmouth Dr, San Jose, CA 95118</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20231224_184922_3.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.12.24</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Place: Santa Monica Pier, CA (33.946190589301, -118.38069099277)</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2023" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20231216_062958_4.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.12.16</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2023" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20231201_232048_5.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.12.01</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Place: San Diego, California (32.7155, -117.1585) Address: San Diego, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231128_140124_6.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.28</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231124_185815_7.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.24</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Click for video: Click for video: Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231122_184053_8.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.22</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Click for video: Place: MGM Grand Las Vegas (36.10181, -115.16855) Address: 3799 S Las Vegas Blvd, Las Vegas...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231118_222640_9.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.18</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Click for video: Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231112_202022_10.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.12</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2023" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20231112_201225_11.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.11.12</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2023" 
+         data-month="10"
+         onclick="window.location.href='articles/article_fb_20231007_101645_124.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.10.07</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2023" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20230922_233246_125.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.09.22</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2023" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20230906_235146_126.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.09.06</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20230906_234909_127.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.09.06</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2023" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20230901_154658_128.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.09.01</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230826_204038_129.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.26</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Click for video: Click for video: Click for video: Place: Seagrove Park (32.959029554127, -117.26727138302)...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230822_231308_130.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.22</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Place: San Diego, California (32.7155, -117.1585) Address: San Diego, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230822_230758_131.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.22</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Place: Canyon Crest Academy Foundation (32.956344505213, -117.19011564059) Address:...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230815_211243_132.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.15</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Place: San Diego, California (32.7155, -117.1585) Address: San Diego, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230815_115345_133.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.15</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Click for video: Click for video: Click for video: Place: San Diego, California (32.7155, -117.1585) Address: San Diego, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230812_215226_134.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.12</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Place: Solana Beach Del Mar (32.9808331549, -117.25358583) Address: Solana Beach, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2023" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20230805_213735_135.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.08.05</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Place: Torrey Pines State Natural Reserve (32.92116858612, -117.25261688232)...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230730_212939_136.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.30</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Click for video: Place: Cabrillo National Monument (32.674422093536, -117.2397422790...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230721_230313_137.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.21</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Place: San Diego, California (32.7155, -117.1585) Address: San Diego, CA</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230715_214503_138.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.15</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Photos Click for video: Place: Sunset Cliffs SD. Ca USA (32.725172519541, -117.25711904488) Address:...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230714_232955_139.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.14</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230711_164306_140.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.11</div>
+      <h3 class="card-title">Moved to San Deigo</h3>
+      <p class="card-text">Jul 11, 2023 Place: San Deigo (33.126195151856, -117.32107485384) Place: San Deigo (33.126195151856, -117.32107485384)</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230710_222448_141.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.10</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230710_221757_142.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.10</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230710_220903_143.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.10</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Click for video:</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230710_220228_144.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.10</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Photos Photos Photos Photos Place: San Deigo (33.126195151856, -117.32107485384)</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2023" 
+         data-month="07"
+         onclick="window.location.href='articles/article_fb_20230710_214851_145.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2023.07.10</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2022" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20220915_031408_149.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2022.09.15</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2021" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20210901_041540_150.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2021.09.01</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2021" 
+         data-month="02"
+         onclick="window.location.href='articles/article_fb_20210211_231925_151.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2021.02.11</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2021" 
+         data-month="01"
+         onclick="window.location.href='articles/article_fb_20210116_002750_152.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2021.01.16</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos Photos Photos Photos Photos Photos Place: Margarita&#x27;s Dempsey Hill (1.3039519619238, 103.81011414763) Address: Blk 11 Dempsey Hill Road Singapore, Sin...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2020" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20201208_043556_153.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2020.12.08</div>
+      <h3 class="card-title">Yao Min Shared from Instagram</h3>
+      <p class="card-text">Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2019" 
+         data-month="06"
+         onclick="window.location.href='articles/article_fb_20190607_032120_155.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2019.06.07</div>
+      <h3 class="card-title">Yao Min shared a link.</h3>
+      <p class="card-text">https://zoom.us/meeting/register/2cc0729dcefbb045c5b9141539e44ee6</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2018" 
+         data-month="05"
+         onclick="window.location.href='articles/article_fb_20180518_014631_156.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2018.05.18</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads #jambarteam</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2017" 
+         data-month="10"
+         onclick="window.location.href='articles/article_fb_20171029_052337_154.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2017.10.29</div>
+      <h3 class="card-title">Yao Min  recommends Bullionstar Singapore.</h3>
+      <p class="card-text">thisi is the best online shop for coin collection.</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2017" 
+         data-month="10"
+         onclick="window.location.href='articles/article_fb_20171002_200512_164.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2017.10.02</div>
+      <h3 class="card-title">Yao Min wrote on Ritesh Joshi&#x27;s profile.</h3>
+      <p class="card-text">Happy birthday</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2017" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20170927_070145_157.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2017.09.27</div>
+      <h3 class="card-title">Yao Min added 4 new photos.</h3>
+      <p class="card-text">Mobile uploads Mobile uploads Mobile uploads Mobile uploads Place: Trevista Condo at Toa Payoh, Singapore D12 (1.3377982828219, 103.84686331954) Address: 21,...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2017" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20170927_064042_158.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2017.09.27</div>
+      <h3 class="card-title">Yao Min added 2 new photos.</h3>
+      <p class="card-text">Photos Photos</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2016" 
+         data-month="03"
+         onclick="window.location.href='articles/article_fb_20160323_201742_159.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2016.03.23</div>
+      <h3 class="card-title">Yao Min shared a link.</h3>
+      <p class="card-text">http://apps.facebook.com/dragoncity/</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2016" 
+         data-month="03"
+         onclick="window.location.href='articles/article_fb_20160322_191544_160.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2016.03.22</div>
+      <h3 class="card-title">Yao Min shared a link.</h3>
+      <p class="card-text">http://apps.facebook.com/dragoncity/</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2016" 
+         data-month="01"
+         onclick="window.location.href='articles/article_fb_20160110_184620_146.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2016.01.10</div>
+      <h3 class="card-title">Yao Min posted something via Dragon City.</h3>
+      <p class="card-text"></p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2015" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20150910_065649_12.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.09.10</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150818_180650_13.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.18</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min has unlocked new monster eggs, buildings and other cool things. Play Monster Legends and create your own incredible Monsters.</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150815_082111_14.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.15</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min has unlocked new monster eggs, buildings and other cool things. Play Monster Legends and create your own incredible Monsters.</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150815_035723_15.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.15</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150815_035342_17.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.15</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150815_034944_16.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.15</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150815_034513_18.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.15</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150811_182513_19.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.11</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150811_044822_21.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.11</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2015" 
+         data-month="08"
+         onclick="window.location.href='articles/article_fb_20150811_043822_20.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2015.08.11</div>
+      <h3 class="card-title">Yao Min posted something via Monster Legends.</h3>
+      <p class="card-text">Yao Min&#x27;s Monsters are proving to be talented fighters! Join Monster Legends now, breed and hatch your own special Monster, fight in battles and win generous...</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2012" 
+         data-month="04"
+         onclick="window.location.href='articles/article_fb_20120425_204201_173.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2012.04.25</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2012" 
+         data-month="04"
+         onclick="window.location.href='articles/article_fb_20120415_064812_148.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2012.04.15</div>
+      <h3 class="card-title">Yao Min posted something via The Travel List Challenge.</h3>
+      <p class="card-text"></p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2012" 
+         data-month="04"
+         onclick="window.location.href='articles/article_fb_20120401_052713_147.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2012.04.01</div>
+      <h3 class="card-title">Yao Min posted something via WeChat.</h3>
+      <p class="card-text"></p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2011" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20111223_043047_172.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.12.23</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads 新家俯视</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2011" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20111119_172854_171.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.11.19</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads Vertical Marathon 2011</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2011" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20111119_172807_170.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.11.19</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads vertical Marathon</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2011" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20111110_222633_161.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.11.10</div>
+      <h3 class="card-title">Yao Min updated his status.</h3>
+      <p class="card-text">一个非常流行的谬论认为，以自住为目的购置房产，房价涨跌与我无关！不得不说，很多人穷，说到底是观念穷、思维落后。真正的财富是一种思维方式，而不是其他。持这种思维者不明白，在现代风险社会同时又是信用金融社会，一套产权完整、支配自由，随时可以和银行完成抵押贷款交易的、价格稳步上涨的独立产权房，事实上是一张最好的人生保险单！</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2011" 
+         data-month="09"
+         onclick="window.location.href='articles/article_fb_20110925_061205_169.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.09.25</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Photos 一个孕妇带着一个2岁多的孩子站在他们面前，居然好意思一个假装睡觉，一个打游戏，实在看不下去了，现在人的素质差到一定程度了，放上照片让大家鄙视一下他们</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2011" 
+         data-month="03"
+         onclick="window.location.href='articles/article_fb_20110310_063038_1.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.03.10</div>
+      <h3 class="card-title">Yao Min shared a link.</h3>
+      <p class="card-text">http://www.rebtel.com/u/01261051580</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2011" 
+         data-month="03"
+         onclick="window.location.href='articles/article_fb_20110309_202425_168.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.03.09</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads Burger king 1$ each,haha so many ppl</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--blue reveal" 
+         data-year="2011" 
+         data-month="02"
+         onclick="window.location.href='articles/article_fb_20110216_192922_162.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.02.16</div>
+      <h3 class="card-title">Yao Min updated his status.</h3>
+      <p class="card-text">强烈支持QQ... 慢慢淘汰MSN 我的QQ：12933693 http://cid-6774723ba2994dc1.skydrive.live.com/albums.aspx</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
+         data-year="2011" 
+         data-month="02"
+         onclick="window.location.href='articles/article_fb_20110216_192615_163.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.02.16</div>
+      <h3 class="card-title">Yao Min updated his status.</h3>
+      <p class="card-text">强烈支持QQ... 慢慢淘汰MSN http://cid-6774723ba2994dc1.skydrive.live.com/albums.aspx</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--rust reveal" 
+         data-year="2011" 
+         data-month="01"
+         onclick="window.location.href='articles/article_fb_20110113_133028_0.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2011.01.13</div>
+      <h3 class="card-title">Yao Min shared a link.</h3>
+      <p class="card-text">http://www.youtube.com/watch?v=0UE3CNu_rtY&amp;feature=youtube_gdata_player</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--moss reveal" 
+         data-year="2010" 
+         data-month="12"
+         onclick="window.location.href='articles/article_fb_20101206_053703_167.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2010.12.06</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--gold reveal" 
+         data-year="2010" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20101127_004020_166.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2010.11.27</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--sky reveal" 
+         data-year="2010" 
+         data-month="11"
+         onclick="window.location.href='articles/article_fb_20101127_004003_165.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2010.11.27</div>
+      <h3 class="card-title">Yao Min added a new photo.</h3>
+      <p class="card-text">Mobile uploads</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+<!-- FB-IMPORT-END -->
+
         
     <div class="diary-card card--blue reveal" 
+         data-year="2026" 
+         data-month="02"
+         onclick="window.location.href='articles/article_20260201_3573796.html'">
+      <span class="card-tag">日志</span>
+      <div class="card-date">2026.02.01</div>
+      <h3 class="card-title">twst</h3>
+      <p class="card-text">test</p>
+      <div class="card-watercolor"></div>
+    </div>
+
+    <div class="diary-card card--teal reveal" 
          data-year="2011" 
          data-month="06"
          onclick="window.location.href='articles/article_20110603_665688875.html'">
@@ -407,7 +1352,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2011" 
          data-month="05"
          onclick="window.location.href='articles/article_20110513_490189349.html'">
@@ -418,7 +1363,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2011" 
          data-month="05"
          onclick="window.location.href='articles/article_20110508_1966822163.html'">
@@ -429,7 +1374,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2011" 
          data-month="03"
          onclick="window.location.href='articles/article_20110310_678219889.html'">
@@ -440,7 +1385,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2011" 
          data-month="01"
          onclick="window.location.href='articles/article_20110114_690441428.html'">
@@ -451,7 +1396,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2011" 
          data-month="01"
          onclick="window.location.href='articles/article_20110114_197782856.html'">
@@ -462,7 +1407,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="12"
          onclick="window.location.href='articles/article_20101209_221146009.html'">
@@ -473,7 +1418,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="11"
          onclick="window.location.href='articles/article_20101127_72217673.html'">
@@ -484,7 +1429,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101029_1694952565.html'">
@@ -495,7 +1440,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101026_956422085.html'">
@@ -506,7 +1451,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101020_438380404.html'">
@@ -517,7 +1462,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101015_890605077.html'">
@@ -528,7 +1473,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101013_2088409727.html'">
@@ -539,7 +1484,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101013_1759382473.html'">
@@ -550,7 +1495,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101004_27265968.html'">
@@ -561,7 +1506,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="10"
          onclick="window.location.href='articles/article_20101003_88242542.html'">
@@ -572,7 +1517,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="09"
          onclick="window.location.href='articles/article_20100929_52901667.html'">
@@ -583,7 +1528,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2010" 
          data-month="08"
          onclick="window.location.href='articles/article_20100819_1133526508.html'">
@@ -594,7 +1539,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="07"
          onclick="window.location.href='articles/article_20100703_1222052268.html'">
@@ -605,7 +1550,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="06"
          onclick="window.location.href='articles/article_20100620_2098964294.html'">
@@ -616,7 +1561,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="06"
          onclick="window.location.href='articles/article_20100611_589215119.html'">
@@ -627,7 +1572,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="06"
          onclick="window.location.href='articles/article_20100605_1676603658.html'">
@@ -638,7 +1583,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="05"
          onclick="window.location.href='articles/article_20100528_591155702.html'">
@@ -649,7 +1594,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2010" 
          data-month="05"
          onclick="window.location.href='articles/article_20100514_1960558483.html'">
@@ -660,7 +1605,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="05"
          onclick="window.location.href='articles/article_20100514_909009648.html'">
@@ -671,7 +1616,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="05"
          onclick="window.location.href='articles/article_20100511_1454837001.html'">
@@ -682,7 +1627,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="04"
          onclick="window.location.href='articles/article_20100415_422282685.html'">
@@ -693,7 +1638,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="04"
          onclick="window.location.href='articles/article_20100412_809338883.html'">
@@ -704,7 +1649,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="04"
          onclick="window.location.href='articles/article_20100407_672222255.html'">
@@ -715,7 +1660,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2010" 
          data-month="03"
          onclick="window.location.href='articles/article_20100326_1103663628.html'">
@@ -726,7 +1671,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="03"
          onclick="window.location.href='articles/article_20100301_1391603853.html'">
@@ -737,7 +1682,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="02"
          onclick="window.location.href='articles/article_20100221_1338252221.html'">
@@ -748,7 +1693,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="02"
          onclick="window.location.href='articles/article_20100208_37538302.html'">
@@ -759,7 +1704,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="02"
          onclick="window.location.href='articles/article_20100208_39694036.html'">
@@ -770,7 +1715,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="02"
          onclick="window.location.href='articles/article_20100205_101923901.html'">
@@ -781,7 +1726,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100131_282550298.html'">
@@ -792,7 +1737,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100127_1110398349.html'">
@@ -803,7 +1748,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100124_873467476.html'">
@@ -814,7 +1759,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100120_1530359580.html'">
@@ -825,7 +1770,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100107_1146793515.html'">
@@ -836,7 +1781,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2010" 
          data-month="01"
          onclick="window.location.href='articles/article_20100107_1863775351.html'">
@@ -847,7 +1792,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="12"
          onclick="window.location.href='articles/article_20091230_726301812.html'">
@@ -858,7 +1803,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="12"
          onclick="window.location.href='articles/article_20091211_768021726.html'">
@@ -869,7 +1814,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="11"
          onclick="window.location.href='articles/article_20091125_411874248.html'">
@@ -880,7 +1825,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="11"
          onclick="window.location.href='articles/article_20091116_650920212.html'">
@@ -891,7 +1836,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="11"
          onclick="window.location.href='articles/article_20091109_1871801955.html'">
@@ -902,7 +1847,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2009" 
          data-month="11"
          onclick="window.location.href='articles/article_20091108_854576557.html'">
@@ -913,7 +1858,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="10"
          onclick="window.location.href='articles/article_20091019_1236334502.html'">
@@ -924,7 +1869,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="10"
          onclick="window.location.href='articles/article_20091014_1060132246.html'">
@@ -935,7 +1880,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="10"
          onclick="window.location.href='articles/article_20091013_704336062.html'">
@@ -946,7 +1891,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="09"
          onclick="window.location.href='articles/article_20090930_1195723733.html'">
@@ -957,7 +1902,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="09"
          onclick="window.location.href='articles/article_20090927_289989559.html'">
@@ -968,7 +1913,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2009" 
          data-month="08"
          onclick="window.location.href='articles/article_20090814_1554175235.html'">
@@ -979,7 +1924,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="08"
          onclick="window.location.href='articles/article_20090810_1353041764.html'">
@@ -990,7 +1935,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="08"
          onclick="window.location.href='articles/article_20090803_127213723.html'">
@@ -1001,7 +1946,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="07"
          onclick="window.location.href='articles/article_20090719_1700081580.html'">
@@ -1012,7 +1957,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="07"
          onclick="window.location.href='articles/article_20090711_1403954551.html'">
@@ -1023,7 +1968,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="06"
          onclick="window.location.href='articles/article_20090617_955558.html'">
@@ -1034,7 +1979,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2009" 
          data-month="06"
          onclick="window.location.href='articles/article_20090607_24434180.html'">
@@ -1045,7 +1990,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="06"
          onclick="window.location.href='articles/article_20090601_816627533.html'">
@@ -1056,7 +2001,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="05"
          onclick="window.location.href='articles/article_20090524_608880879.html'">
@@ -1067,7 +2012,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="05"
          onclick="window.location.href='articles/article_20090517_949883648.html'">
@@ -1078,7 +2023,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="05"
          onclick="window.location.href='articles/article_20090514_169254522.html'">
@@ -1089,7 +2034,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="05"
          onclick="window.location.href='articles/article_20090511_387150463.html'">
@@ -1100,7 +2045,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2009" 
          data-month="05"
          onclick="window.location.href='articles/article_20090501_1904046980.html'">
@@ -1111,7 +2056,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="04"
          onclick="window.location.href='articles/article_20090414_285023442.html'">
@@ -1122,7 +2067,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="04"
          onclick="window.location.href='articles/article_20090409_1800078130.html'">
@@ -1133,7 +2078,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="04"
          onclick="window.location.href='articles/article_20090405_729143046.html'">
@@ -1144,7 +2089,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="03"
          onclick="window.location.href='articles/article_20090312_2052203749.html'">
@@ -1155,7 +2100,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="03"
          onclick="window.location.href='articles/article_20090304_429495038.html'">
@@ -1166,7 +2111,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2009" 
          data-month="03"
          onclick="window.location.href='articles/article_20090302_456716759.html'">
@@ -1177,7 +2122,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2009" 
          data-month="02"
          onclick="window.location.href='articles/article_20090220_1172657607.html'">
@@ -1188,7 +2133,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2009" 
          data-month="02"
          onclick="window.location.href='articles/article_20090208_766461.html'">
@@ -1199,7 +2144,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2009" 
          data-month="01"
          onclick="window.location.href='articles/article_20090130_1304407117.html'">
@@ -1210,7 +2155,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2009" 
          data-month="01"
          onclick="window.location.href='articles/article_20090102_19882281.html'">
@@ -1221,7 +2166,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2009" 
          data-month="01"
          onclick="window.location.href='articles/article_20090101_722132967.html'">
@@ -1232,7 +2177,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081231_984074600.html'">
@@ -1243,7 +2188,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081213_1680723355.html'">
@@ -1254,7 +2199,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081210_1975571197.html'">
@@ -1265,7 +2210,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081210_287311060.html'">
@@ -1276,7 +2221,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081207_1750983888.html'">
@@ -1287,7 +2232,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="12"
          onclick="window.location.href='articles/article_20081204_110821831.html'">
@@ -1298,7 +2243,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="11"
          onclick="window.location.href='articles/article_20081121_679350784.html'">
@@ -1309,7 +2254,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="11"
          onclick="window.location.href='articles/article_20081117_1770737937.html'">
@@ -1320,7 +2265,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="11"
          onclick="window.location.href='articles/article_20081116_2097266524.html'">
@@ -1331,7 +2276,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="11"
          onclick="window.location.href='articles/article_20081116_698167078.html'">
@@ -1342,7 +2287,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="10"
          onclick="window.location.href='articles/article_20081026_1280372320.html'">
@@ -1353,7 +2298,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="10"
          onclick="window.location.href='articles/article_20081011_1747556581.html'">
@@ -1364,7 +2309,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="10"
          onclick="window.location.href='articles/article_20081007_551642947.html'">
@@ -1375,7 +2320,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="10"
          onclick="window.location.href='articles/article_20081005_17377577.html'">
@@ -1386,7 +2331,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="10"
          onclick="window.location.href='articles/article_20081003_1159312568.html'">
@@ -1397,7 +2342,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="09"
          onclick="window.location.href='articles/article_20080928_2116234940.html'">
@@ -1408,7 +2353,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="09"
          onclick="window.location.href='articles/article_20080928_1647538388.html'">
@@ -1419,7 +2364,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="09"
          onclick="window.location.href='articles/article_20080915_1511933719.html'">
@@ -1430,7 +2375,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080831_254236747.html'">
@@ -1441,7 +2386,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080825_729560017.html'">
@@ -1452,7 +2397,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080824_855308436.html'">
@@ -1463,7 +2408,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080824_1310673751.html'">
@@ -1474,7 +2419,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080814_620119894.html'">
@@ -1485,7 +2430,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080804_620115833.html'">
@@ -1496,7 +2441,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="08"
          onclick="window.location.href='articles/article_20080801_138991766.html'">
@@ -1507,7 +2452,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="07"
          onclick="window.location.href='articles/article_20080728_620120173.html'">
@@ -1518,7 +2463,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="07"
          onclick="window.location.href='articles/article_20080726_1302907487.html'">
@@ -1529,7 +2474,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="07"
          onclick="window.location.href='articles/article_20080726_1847226217.html'">
@@ -1540,7 +2485,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="07"
          onclick="window.location.href='articles/article_20080706_372161366.html'">
@@ -1551,7 +2496,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="06"
          onclick="window.location.href='articles/article_20080606_22642459.html'">
@@ -1562,7 +2507,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080531_1040819.html'">
@@ -1573,7 +2518,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080530_1100536991.html'">
@@ -1584,7 +2529,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080529_650912696.html'">
@@ -1595,7 +2540,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080522_1278815802.html'">
@@ -1606,7 +2551,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080515_529298417.html'">
@@ -1617,7 +2562,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080513_1951811635.html'">
@@ -1628,7 +2573,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="05"
          onclick="window.location.href='articles/article_20080511_920325189.html'">
@@ -1639,7 +2584,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080430_571857606.html'">
@@ -1650,7 +2595,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080426_1105235268.html'">
@@ -1661,7 +2606,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080426_486226576.html'">
@@ -1672,7 +2617,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080426_193479848.html'">
@@ -1683,7 +2628,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080419_34847478.html'">
@@ -1694,7 +2639,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080412_1101713453.html'">
@@ -1705,7 +2650,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080404_1289746149.html'">
@@ -1716,7 +2661,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080404_124387328.html'">
@@ -1727,7 +2672,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="04"
          onclick="window.location.href='articles/article_20080404_1493712844.html'">
@@ -1738,7 +2683,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080323_1397554556.html'">
@@ -1749,7 +2694,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080323_833554436.html'">
@@ -1760,7 +2705,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080320_2088898152.html'">
@@ -1771,7 +2716,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080318_658473265.html'">
@@ -1782,7 +2727,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080316_82690984.html'">
@@ -1793,7 +2738,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080315_1134264076.html'">
@@ -1804,7 +2749,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080312_1389837353.html'">
@@ -1815,7 +2760,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080310_2047341082.html'">
@@ -1826,7 +2771,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080308_134152498.html'">
@@ -1837,7 +2782,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080307_2098947745.html'">
@@ -1848,7 +2793,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080307_1337695765.html'">
@@ -1859,7 +2804,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080306_614085100.html'">
@@ -1870,7 +2815,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="03"
          onclick="window.location.href='articles/article_20080304_344358413.html'">
@@ -1881,7 +2826,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080229_762019672.html'">
@@ -1892,7 +2837,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080227_722625505.html'">
@@ -1903,7 +2848,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080227_30033881.html'">
@@ -1914,7 +2859,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080221_61001058.html'">
@@ -1925,7 +2870,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080217_1725162170.html'">
@@ -1936,7 +2881,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080215_74012317.html'">
@@ -1947,7 +2892,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="02"
          onclick="window.location.href='articles/article_20080215_1682158829.html'">
@@ -1958,7 +2903,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080129_855547827.html'">
@@ -1969,7 +2914,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080129_2108760362.html'">
@@ -1980,7 +2925,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080122_907455781.html'">
@@ -1991,7 +2936,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080118_2142290048.html'">
@@ -2002,7 +2947,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080118_1131494936.html'">
@@ -2013,7 +2958,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080117_1662046581.html'">
@@ -2024,7 +2969,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080115_1322078396.html'">
@@ -2035,7 +2980,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080115_843004745.html'">
@@ -2046,7 +2991,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080113_1694412968.html'">
@@ -2057,7 +3002,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080109_1311603755.html'">
@@ -2068,7 +3013,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2008" 
          data-month="01"
          onclick="window.location.href='articles/article_20080109_1416563137.html'">
@@ -2079,7 +3024,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2007" 
          data-month="12"
          onclick="window.location.href='articles/article_20071226_629864217.html'">
@@ -2090,7 +3035,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2007" 
          data-month="11"
          onclick="window.location.href='articles/article_20071116_953551324.html'">
@@ -2101,7 +3046,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2007" 
          data-month="11"
          onclick="window.location.href='articles/article_20071112_1711617975.html'">
@@ -2112,7 +3057,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2007" 
          data-month="10"
          onclick="window.location.href='articles/article_20071008_326768950.html'">
@@ -2123,7 +3068,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2007" 
          data-month="09"
          onclick="window.location.href='articles/article_20070928_1977840083.html'">
@@ -2134,7 +3079,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2007" 
          data-month="09"
          onclick="window.location.href='articles/article_20070926_818511.html'">
@@ -2145,7 +3090,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2007" 
          data-month="09"
          onclick="window.location.href='articles/article_20070916_731321291.html'">
@@ -2156,7 +3101,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2007" 
          data-month="07"
          onclick="window.location.href='articles/article_20070709_483597027.html'">
@@ -2167,7 +3112,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2007" 
          data-month="04"
          onclick="window.location.href='articles/article_20070415_1985976136.html'">
@@ -2178,7 +3123,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2007" 
          data-month="04"
          onclick="window.location.href='articles/article_20070408_1294155641.html'">
@@ -2189,7 +3134,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2007" 
          data-month="03"
          onclick="window.location.href='articles/article_20070326_1124443548.html'">
@@ -2200,7 +3145,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2007" 
          data-month="03"
          onclick="window.location.href='articles/article_20070326_1040819.html'">
@@ -2211,7 +3156,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2007" 
          data-month="03"
          onclick="window.location.href='articles/article_20070315_464390609.html'">
@@ -2222,7 +3167,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2006" 
          data-month="12"
          onclick="window.location.href='articles/article_20061202_1581203942.html'">
@@ -2233,7 +3178,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2006" 
          data-month="11"
          onclick="window.location.href='articles/article_20061130_657016480.html'">
@@ -2244,7 +3189,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2006" 
          data-month="10"
          onclick="window.location.href='articles/article_20061002_1786640533.html'">
@@ -2255,7 +3200,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2006" 
          data-month="08"
          onclick="window.location.href='articles/article_20060819_583086404.html'">
@@ -2266,7 +3211,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2006" 
          data-month="07"
          onclick="window.location.href='articles/article_20060731_120400496.html'">
@@ -2277,7 +3222,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2006" 
          data-month="07"
          onclick="window.location.href='articles/article_20060725_32421974.html'">
@@ -2288,7 +3233,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2006" 
          data-month="06"
          onclick="window.location.href='articles/article_20060612_743409563.html'">
@@ -2299,7 +3244,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2006" 
          data-month="04"
          onclick="window.location.href='articles/article_20060401_43837157.html'">
@@ -2310,7 +3255,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2006" 
          data-month="01"
          onclick="window.location.href='articles/article_20060122_1795319425.html'">
@@ -2321,7 +3266,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2006" 
          data-month="01"
          onclick="window.location.href='articles/article_20060118_1613046432.html'">
@@ -2332,7 +3277,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2005" 
          data-month="12"
          onclick="window.location.href='articles/article_20051222_917888048.html'">
@@ -2343,7 +3288,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2005" 
          data-month="12"
          onclick="window.location.href='articles/article_20051216_650566640.html'">
@@ -2354,7 +3299,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2005" 
          data-month="11"
          onclick="window.location.href='articles/article_20051121_92750509.html'">
@@ -2365,7 +3310,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2005" 
          data-month="10"
          onclick="window.location.href='articles/article_20051021_2040558606.html'">
@@ -2376,7 +3321,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2005" 
          data-month="10"
          onclick="window.location.href='articles/article_20051015_1478474411.html'">
@@ -2387,7 +3332,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2005" 
          data-month="09"
          onclick="window.location.href='articles/article_20050918_1477919041.html'">
@@ -2398,7 +3343,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2005" 
          data-month="09"
          onclick="window.location.href='articles/article_20050901_1455163864.html'">
@@ -2409,7 +3354,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050823_1779770450.html'">
@@ -2420,7 +3365,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050820_1628071805.html'">
@@ -2431,7 +3376,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050817_810571637.html'">
@@ -2442,7 +3387,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050810_2011682982.html'">
@@ -2453,7 +3398,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050809_112082619.html'">
@@ -2464,7 +3409,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--rust reveal" 
+    <div class="diary-card card--moss reveal" 
          data-year="2005" 
          data-month="08"
          onclick="window.location.href='articles/article_20050804_938944456.html'">
@@ -2475,7 +3420,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--moss reveal" 
+    <div class="diary-card card--gold reveal" 
          data-year="2005" 
          data-month="07"
          onclick="window.location.href='articles/article_20050729_212812846.html'">
@@ -2486,7 +3431,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--gold reveal" 
+    <div class="diary-card card--sky reveal" 
          data-year="2005" 
          data-month="07"
          onclick="window.location.href='articles/article_20050726_1007815140.html'">
@@ -2497,7 +3442,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--sky reveal" 
+    <div class="diary-card card--blue reveal" 
          data-year="2005" 
          data-month="07"
          onclick="window.location.href='articles/article_20050725_881177934.html'">
@@ -2508,7 +3453,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--blue reveal" 
+    <div class="diary-card card--teal reveal" 
          data-year="2005" 
          data-month="07"
          onclick="window.location.href='articles/article_20050724_380600307.html'">
@@ -2519,7 +3464,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <div class="card-watercolor"></div>
     </div>
 
-    <div class="diary-card card--teal reveal" 
+    <div class="diary-card card--rust reveal" 
          data-year="2005" 
          data-month="07"
          onclick="window.location.href='articles/article_20050723_709872476.html'">
