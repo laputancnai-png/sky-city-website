@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>工作再忙心不忙，生活再苦心不累 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <nav class="nav-bar">
+    <a href="../index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2006.07.31</div>
+      <h1 class="article-title">工作再忙心不忙，生活再苦心不累</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!775" class="bvMsg">
+<div>&lt;转摘&gt;</div>
+<div>以健康快乐和美丽的名义</p>
+<p>　　现代社会的步伐太快，现代生活的节奏太快。现代人除了每天要马不停蹄的奔波以外，那高速运转的大脑也没有一刻的空闲，许多人睡梦中都闪回着人生的课题，真是太累太累了。</p>
+<p>　　世界卫生组织的调查显示，每年有190万人因劳累猝死。</p>
+<p>　　在日本，公司员工在工作吃饭睡觉之外，参加运动的人仅占员工人数的53%，也就是说有47%的人从来不运动。日本的“过劳死”人数占全世界第一。</p>
+<p>　　在中国，每天象被鞭子赶着一样来去匆匆的人更不在少数；这些人身忙，心更躁。</p>
+<p>　　健康就这样被剥夺了。</p>
+<p>　　快乐也随之消失得无影无踪。</p>
+<p>　　至于美丽，除了那人工雕琢的一张脸面之外，人们早已忘记了世上还有一种美，叫做“清水出芙蓉”！</p>
+<p>　　许许多多姐妹就这样急匆匆地交代了自己的青春，慢慢憔悴直至枯萎。</p>
+<p>　　太可怕了。</p>
+<p>　　一切的一切急需慢下来！</p>
+<p>　　最重要的，当然是慢下自己的心来。</p>
+<p>　　要真正做到“工作再忙心不忙，生活再苦心不累”。</p>
+<p>　　要达到这样的境界并不容易，这需要大量的形式来帮助，也需要具体的内容来落实。</p>
+<p>　　浏览一下国外的“慢”镜头。</p>
+<p>　　<b>慢餐饮</b>：</p>
+<p>　　“慢餐不仅仅是给我们的味蕾寻找美味，而是为了保留我们的人性。”著名的“慢餐国际组织”在十几年间不断四处呼吁。1989年，意大利记者、餐饮评论家佩特里尼被几十名学生坐在“西班牙广场”上大嚼汉堡包的场景震惊。为唤醒人们遭快餐催眠的味觉。佩特里尼发起了“国际慢餐协会”，提倡回归对食物及用餐环境的高素质要求。SLOWFOOD的标志：那个O字，设计成蜗牛的模样——慢慢吃吧，没有太特别的事情要赶的。</p>
+<p>　　<b>慢读书：</b></p>
+<p>　　“一目十行”是对阅读高手的赞美，但是，很多美国“慢一族”开始放慢阅读速度，他们认为“细嚼慢咽”的读书可以完全沉浸在书籍的氛围中，给与细节更多的关注，这样做不仅阅读效果好，也能够带来更多心灵上的愉悦。随着“慢”的追随者越来越多，欧美社会逐渐受到这股潮流的影响，开始崇尚那个“慢”的理念已经深入到欧美社会的各个角落。时间研究员、时间经理、抗紧张培训班等闻所未闻的名词不断出现。在美国，甚至出现了一个“放慢时间协会”，在全球拥有700多个“盟友”。</p>
+<p>　　<b>慢旅行：</b></p>
+<p>　　缓慢履行强调并不是去哪里，而是在哪里。除了从历史遗迹入门，了解历史宗教对当地人的影响，更可以到街巷上的百年老店，去品味当地人表现在日常生活中的美感意识。缓慢的城市更需要缓慢的步调。你可以不搭电车、巴士，用脚踏车或步行穿梭在大街小巷。你会发现，有缘接近人类世世代代传承的幸福，是多么的幸运。</p>
+<p>　　<b>慢工作：</b></p>
+<p>　　现代工作节奏是“慢”的大敌，对于它，“慢一族”也有解决的办法。在法国，3%的企管人员在家办公。42岁的IT公司人事部经理皮尔3年前决定回家办公，繁忙了近20年的他终于有时间好好的和家人相处了。她这样做不仅没有耽误工作，而且还以提出简化人事管理的建议受到奖励，使公司最终决定30%的而向工作人员可以在家办公。此外，“慢一族”还强调花更多的时间处理一件事，而不是在不同的事之间周旋。例如，医生应该多花时间了解病人，而不是巡视查房走一圈而已，这样有助于达到更好的治疗效果。</p>
+<p>　　<b>慢运动：</b></p>
+<p>　　如今，无论是在忙碌的美国还是浪漫的澳洲，一种“每天一万步”的健身方法相当流行。医学研究表明，每天步行1小时以上的男子，心脏局部缺血症的发病率比很少参加运动的人低4倍。中医认为，脚掌是人体的“第二个心脏”，人体的五脏六腑都与两只脚息息相关。人类脚踝以下有51个穴位，其中脚底有15个穴位。日行万步，就等于不断地在按摩第二个心脏。那么，请试想一下，在离家还有三站地距离的时候，如果改乘车为走路，你觉得如何？或许你会不假思索地说：“有耽误了宝贵的15分钟。”但换个角度想，这15分钟，你的全身集体都在运动，你又享受到了什么？</p>
+<p>　　<b>慢性生活：</b></p>
+<p>　　“慢生活”的支持者们认为，在性生活中，应该多拿出时间来享受身体的美好感觉，而不是快速“直奔主题”。很多夫妻间的矛盾是由性生活的“快与慢”引起，在这一点上适者生存，并不是越快越好。</p>
+<p>　　<b>慢休闲：</b></p>
+<p>　　很多现代人的休闲方式是一群人出去狂欢一把，然后一哄而散，在“慢一族”看来，这不叫休闲。我们来看看美国的克萨斯的一个养猪农场主哈瑞斯先生的生活；他每天晚上8点半钟之后就把手机关掉，或读书或早早就寝。周末两天，不接受任何大规模聚会邀请，而是和妻子或几个好友相约外出，要么钓鱼，要么寻找其它休闲方式。 </div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>巴菲特自述:我的城堡和我投资的5+12+8+2法则 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <nav class="nav-bar">
+    <a href="../index.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2009.05.17</div>
+      <h1 class="article-title">巴菲特自述:我的城堡和我投资的5+12+8+2法则</h1>
+    </header>
+
+    <div class="article-content">
+      <div id="msgcns!6774723BA2994DC1!6263" class="bvMsg">
+<p align="left"><font>我只喜欢我看得懂的生意，这个标准排除了90%的企业；我要看清这个企业10年的大方向。 <br /></font><font><b>我怎么选股:<br /></b>    重心是“什么”上面，而不是“何时”<br />    可口可乐公司于1919年上市，那时的价格是40美元左右。一年后，股价降了50%，只有19美元。看起来那是一场灾难。瓶装问题，糖料涨价，你总能发现这样那样的原因让你觉得那不是一个合适的买入时机。一些年之后，又发生了大萧条，第二次世界大战，核武器竞赛等。总是有原因(让你不买)。如果你在一开始40块钱买了一股，然后你把派发的红利进行再投资(买入可口可乐的股票)，一直到现在，那股可乐股票的价值是5000万。这个事实压倒了一切。如果你看对了生意模式，你就会赚很多钱。<br />    切入点的时机是很难把握的。所以，如果我拥有的是一个绝佳的生意，我丝毫不会为某一个事件的发生，或者它对未来一年的影响等等而担忧。当然，在过去的某些个时间段，政府施加了价格管制政策。企业因而不能涨价，即使最好的企业有时也会受影响，我们的See&#8217;s Candy糖果不能在 12月26日涨价。但是，管制该发生的时候就会发生，它绝不会把一个杰出的企业蜕变成一个平庸的企业。政府是不可能永远实施管制政策的。<br />     一个杰出的企业可以预计到将来可能会发生什么，但不一定会准确到何时会发生。重心需要放在“什么”上面，而不是“何时”上。如果对“什么”的判断是正确的，那么对“何时”大可不必过虑。 <br /><b>我凭什么选股：</b><br />    给我10亿和10年<br />    我只喜欢我看得懂的生意，这个标准排除了90%的企业。我想要的生意外面得有个城墙，居中是价值不菲的城堡，我要负责的、能干的人才来管理。<br />    三十年前，柯达公司的城墙和可口可乐的城墙是一样难以逾越的。柯达向你保证你今天的照片，20年，50年后看起来仍是栩栩如生，这一点对你而言可能恰恰是最重要的。30年前的柯达就有那样的魅力，它占据了每个人的心。在地球上每个人的心里，它的那个小黄盒子都在说，柯达是最好的。那真是无价的。<br />    现在的柯达已经不再独占人们的心。它的城墙变薄了，富士用各种手段缩小了差距。柯达让富士成为奥林匹克运动会的赞助商，一个一直以来由柯达独占的位置。于是在人们的印象里，富士变得和柯达平起平坐起来。<br />    与之相反的是，可口可乐的城墙与30年前比，变得更宽了。你可能看不到城墙一天天的变化。但是，每次你看到可口可乐的工厂扩张到一个目前并不盈利，但20年后一定会的国家，它的城墙就加宽些。企业的城墙每天每年都在变，或厚或窄。10年后，你就会看到不同。<br />    我给那些公司经理人的要求就是，让城墙更厚些，保护好它，拒竞争者于墙外。我寻找的就是这样的企业。那么这样的企业都在做什么生意呢？我要找到他们，就要从最简单的产品里找到那些(杰出的企业)。因为我没法预料到10年以后，甲骨文，莲花，或微软会发展成什么样。比尔?盖茨是我碰到过的最好的生意人。微软现在所处的位置也很好。但是我还是对他们10年后的状况无从知晓。同样我对他们的竞争对手10年后的情形也一无所知。<br />    虽然我不拥有口香糖的公司，但是我知道10年后他们的发展会怎样。互联网是不会改变我们嚼口香糖的方式的，事实上，没什么能改变我们嚼口香糖的方式。会有很多的(口香糖)新产品不断进入试验期，一些以失败告终。这是事物发展的规律。如果你给我10个亿，让我进入口香糖的生意，打开一个缺口，我无法做到。这就是我考量一个生意的基本原则。给我10个亿，我能对竞争对手有多少打击？给我100个亿，我对全世界的可口可乐的损失会有多大？我做不到，因为，他们的生意稳如磐石。给我些钱，让我去占领其他领域，我却总能找出办法把事情做到。<br />    这样，我就能看清这个企业10年的大方向。如果我做不到这一点，我是不会买的。 <br /><b>我的5项投资逻辑：</b><br />    1.因为我把自己当成是企业的经营者，所以我成为优秀的投资人；因为我把自己当成投资人，所以我成为优秀的企业经营者。<br />    2.好的企业比好的价格更重要。<br />    3.一生追求消费垄断企业。<br />    4.最终决定股价的是实质价值。<br />    5.没有任何时间适合将最优秀的企业脱手。 <br /></font><font><b>我的12项投资要点：<br /></b>    1.利用市场的愚蠢有规律的投资。<br />    2.买价决定报酬率的高低，即使是长线投资也是如此。<br />    3.利润的复合增长与交易费用和税负的避免使投资人受益无穷。<br />    4.不在意一家公司来年可赚多少，仅有意未来5至10年能赚多少。<br />    5.只投资未来收益高确定性企业。<br />    6.通货膨胀是投资者的最大敌人。<br />    7.价值型与成长型的投资理念是相通的；价值是一项投资未来现金流量的折现值；而成长只是用来决定价值的预测过程。<br />    8.投资人财务上的成功与他对投资企业的了解程度成正比。<br />    9.“安全边际”从两个方面协助你的投资：首先是缓冲可能的价格风险；其次是可获得相对高的权益报酬率。<br />    10.拥有一只股票，期待它下个星期就上涨，是十分愚蠢的。<br />    11.就算联储主席偷偷告诉我未来两年的货币政策，我也不会改变我的任何一个作为。<br />    12.不理会股市的涨跌，不担心经济情势的变化，不相信任何预测，不接受任何内幕消息，只注意两点：A.买什么股票；B.买入价格。 <br /><b>我的8项投资标准：</b><br />    1.必须是消费垄断企业。<br />    2.产品简单、易了解、前景看好。<br />    3.有稳定的经营史。<br />    4.经营者理性、忠诚，始终以股东利益为先。<br />    5.财务稳键。<br />    6.经营效率高、收益好。<br />    7.资本支出少、自由现金流量充裕。<br />    8.价格合理。 <br /><b>我的2项投资方式</b><br />    1.卡片打洞、终生持有，每年检查一次以下数字：A.初始的权益报酬率；B.营运毛利；C.负债水准；D.资本支出；E.现金流量。<br />    2.当市场过于高估持有股票的价格时，也可考虑进行短期套利。</font></p>
+<div></div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>
