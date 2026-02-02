@@ -57,7 +57,7 @@ allItems.forEach((item, index) => {
     
     // Generate Article HTML Page
     let pageContent = articleTemplate
-        .replace('href="index.html"', 'href="../index.html"')
+        .replace('href="index.html"', 'href="../home.html"') // Back link now points to home.html
         .replace(/{{TITLE}}/g, item.title)
         .replace(/{{DATE}}/g, dateStr)
         .replace(/{{CONTENT}}/g, item.content);
@@ -99,11 +99,46 @@ sortedYears.forEach(year => {
     </li>`;
 });
 
-// 4. Update Index
+// 4. Update Home (Diary List)
 let finalHtml = indexTemplate
     .replace('{{SIDEBAR_CONTENT}}', sidebarHtml)
     .replace('{{GRID_CONTENT}}', gridHtml);
 
-fs.writeFileSync(path.join(outputDir, 'index.html'), finalHtml);
+// Inject Audio Player into home.html
+const playerHtml = `
+<div id="music-player" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; display: flex; align-items: center; background: rgba(255,255,255,0.8); padding: 8px 15px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.5);">
+  <button id="play-btn" onclick="toggleMusic()" style="background:none; border:none; cursor:pointer; font-size: 20px; color: #4a7c6f; margin-right:10px;">▶</button>
+  <span style="font-size: 12px; color: #555; font-family: sans-serif;">天空之城</span>
+  <audio id="bgm" loop>
+    <source src="bgm.mp3" type="audio/mpeg">
+  </audio>
+</div>
+<script>
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('play-btn');
+  
+  // Try autoplay immediately
+  audio.volume = 0.4;
+  const p = audio.play();
+  if (p !== undefined) {
+    p.then(() => { btn.innerText = '⏸'; })
+     .catch(() => { btn.innerText = '▶'; }); // Autoplay blocked
+  }
 
-console.log("Done! Site regenerated.");
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      btn.innerText = '⏸';
+    } else {
+      audio.pause();
+      btn.innerText = '▶';
+    }
+  }
+</script>
+</body>`;
+
+finalHtml = finalHtml.replace('</body>', playerHtml);
+
+fs.writeFileSync(path.join(outputDir, 'home.html'), finalHtml);
+
+console.log("Done! Site regenerated (home.html + articles).");

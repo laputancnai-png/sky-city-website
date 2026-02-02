@@ -11,7 +11,6 @@ const SESSION_TIMEOUT = 3600 * 1000 * 24; // 24 hours
 // Paths
 const BASE_DIR = __dirname;
 const DB_FILE = path.join(BASE_DIR, 'articles.db');
-// Script is now in the same directory
 const GENERATE_SCRIPT = path.join(BASE_DIR, 'generate_from_db.js');
 const TEMP_SQL_FILE = path.join(BASE_DIR, 'temp_op.sql');
 
@@ -25,7 +24,8 @@ const MIME_TYPES = {
     '.js': 'text/javascript',
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
-    '.svg': 'image/svg+xml'
+    '.svg': 'image/svg+xml',
+    '.mp3': 'audio/mpeg'
 };
 
 // --- Helpers ---
@@ -74,36 +74,59 @@ function setSession(res, username) {
     res.setHeader('Set-Cookie', `sessionId=${sessionId}; HttpOnly; Path=/; Max-Age=86400`);
 }
 
+function generateSlug(pubDate, title) {
+    const d = new Date(pubDate);
+    const datePrefix = `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+    let hash = 0;
+    for (let i = 0; i < title.length; i++) {
+        hash = ((hash << 5) - hash) + title.charCodeAt(i);
+        hash |= 0;
+    }
+    return `article_${datePrefix}_${Math.abs(hash)}`;
+}
+
+function getExcerpt(content, length = 100) {
+    let text = content || "";
+    text = text.replace(/<[^>]+>/g, ''); 
+    text = text.replace(/\s+/g, ' ').trim();
+    if (text.length <= length) return text;
+    return text.substring(0, length) + '...';
+}
+
 function renderAuthPage(title, bodyContent) {
     return `
     <!DOCTYPE html>
     <html>
     <head>
-        <title>${title} - 天空之城</title>
+        <title>${title} - 天空之城后台</title>
         <meta charset="utf-8">
         <style>
-            body { font-family: -apple-system, sans-serif; background: #f0ebe2; display: flex; justify-content: center; padding-top: 80px; min-height: 100vh; margin:0; color: #2c2420; }
-            .card { background: rgba(255,255,255,0.9); padding: 40px; border-radius: 4px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); width: 100%; max-width: 400px; border: 1px solid rgba(44,36,32,0.1); }
-            h1 { margin-top: 0; color: #2c2420; text-align: center; font-weight: normal; letter-spacing: 0.1em; }
-            input, textarea { width: 100%; padding: 12px; margin: 8px 0 20px; border: 1px solid #dcd3c1; border-radius: 3px; box-sizing: border-box; background: #faf9f6; }
-            button { width: 100%; background: #4a7c6f; color: white; padding: 12px; border: none; border-radius: 3px; font-size: 16px; cursor: pointer; letter-spacing: 0.1em; transition: background 0.3s; }
+            body { font-family: -apple-system, sans-serif; background: #f0ebe2; display: flex; justify-content: center; padding-top: 40px; min-height: 100vh; margin:0; color: #2c2420; }
+            .container { width: 100%; max-width: 800px; padding: 0 20px; }
+            .card { background: rgba(255,255,255,0.95); padding: 30px; border-radius: 4px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); border: 1px solid rgba(44,36,32,0.1); margin-bottom: 20px; }
+            h1 { margin-top: 0; color: #2c2420; font-weight: normal; letter-spacing: 0.1em; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+            input, textarea { width: 100%; padding: 10px; margin: 8px 0 15px; border: 1px solid #dcd3c1; border-radius: 3px; box-sizing: border-box; font-family: inherit; }
+            button { background: #4a7c6f; color: white; padding: 10px 20px; border: none; border-radius: 3px; font-size: 14px; cursor: pointer; transition: background 0.3s; }
             button:hover { background: #3a6358; }
-            .link { text-align: center; display: block; margin-top: 15px; color: #6b5f52; text-decoration: none; font-size: 14px; }
+            .link { color: #6b5f52; text-decoration: none; font-size: 14px; margin-right: 15px; }
             .link:hover { color: #b06840; }
-            .error { background: #ffebee; color: #c62828; padding: 10px; border-radius: 4px; margin-bottom: 20px; text-align: center; font-size: 0.9em; }
-            .success { background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 4px; margin-bottom: 20px; text-align: center; font-size: 0.9em; }
-            label { font-size: 0.9em; color: #6b5f52; }
+            .error { background: #ffebee; color: #c62828; padding: 10px; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+            .success { background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+            label { font-size: 0.9em; color: #6b5f52; font-weight: bold; }
+            table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+            th, td { text-align: left; padding: 12px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+            .actions { text-align: right; }
+            .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         </style>
     </head>
     <body>
-        <div class="card">
+        <div class="container">
             ${bodyContent}
         </div>
     </body>
     </html>`;
 }
 
-// Function to serve static files with Injection
 function serveStatic(res, filePath, session) {
     fs.readFile(filePath, (err, data) => {
         if (err) {
@@ -115,38 +138,36 @@ function serveStatic(res, filePath, session) {
         const ext = path.extname(filePath);
         const contentType = MIME_TYPES[ext] || 'text/plain';
         
-        // Inject Auth Links for HTML files
+        // Inject Auth Links ONLY for HTML files
         if (ext === '.html') {
             let html = data.toString('utf8');
             let authHtml = '';
             
-            if (session) {
-                authHtml = `
-                    <span class="auth-user">Hi, ${session.username}</span>
-                    <a href="/admin" class="auth-link">✍️ 写日记</a>
-                    <a href="/logout" class="auth-link">退出</a>
-                `;
-            } else {
-                authHtml = `
-                    <a href="/login" class="auth-link">登录</a>
-                    <a href="/register" class="auth-link">注册</a>
-                `;
+            // Only inject if placeholder exists (it might not exist in index.html now)
+            if (html.includes('{{AUTH_LINKS}}')) {
+                if (session) {
+                    authHtml = `
+                        <span class="auth-user">Hi, ${session.username}</span>
+                        <a href="/admin" class="auth-link">⚙️ 管理后台</a>
+                        <a href="/logout" class="auth-link">退出</a>
+                    `;
+                } else {
+                    authHtml = `
+                        <a href="/login" class="auth-link">登录</a>
+                        <a href="/register" class="auth-link">注册</a>
+                    `;
+                }
+                html = html.replace('{{AUTH_LINKS}}', authHtml);
             }
-            
-            // Replace placeholder
-            html = html.replace('{{AUTH_LINKS}}', authHtml);
             
             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
             res.end(html);
         } else {
-            // Binary files (images)
             res.writeHead(200, { 'Content-Type': contentType });
             res.end(data);
         }
     });
 }
-
-// --- Server Logic ---
 
 const server = http.createServer(async (req, res) => {
     const parsedUrl = url.parse(req.url, true);
@@ -154,20 +175,29 @@ const server = http.createServer(async (req, res) => {
     const session = getSession(req);
     const method = req.method;
 
-    // 1. Static Files Routing
+    // 1. Static Files
     if (pathname === '/' || pathname === '/index.html') {
-        serveStatic(res, path.join(BASE_DIR, 'index.html'), session);
+        // Landing page (Clean, no auth links)
+        serveStatic(res, path.join(BASE_DIR, 'index.html'), null); 
+        return;
+    }
+
+    if (pathname === '/home' || pathname === '/home.html') {
+        // Diary list page (Inject auth links)
+        serveStatic(res, path.join(BASE_DIR, 'home.html'), session);
         return;
     }
     
-    // Serve Articles or Assets
-    if (pathname.startsWith('/articles/') || pathname.endsWith('.png') || pathname.endsWith('.css') || pathname.endsWith('.js')) {
-        // Security check: prevent directory traversal
+    // Assets (images, css, js, mp3, articles)
+    if (pathname.startsWith('/articles/') || pathname.match(/\.(png|jpg|css|js|mp3)$/)) {
         const safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
         const fullPath = path.join(BASE_DIR, safePath);
         
+        // Inject session only if it's an HTML article
+        const injectSession = pathname.endsWith('.html') ? session : null;
+        
         if (fs.existsSync(fullPath)) {
-            serveStatic(res, fullPath, session);
+            serveStatic(res, fullPath, injectSession);
             return;
         }
     }
@@ -177,17 +207,21 @@ const server = http.createServer(async (req, res) => {
         if (method === 'GET') {
             const error = parsedUrl.query.error ? `<div class="error">${parsedUrl.query.error}</div>` : '';
             res.end(renderAuthPage('登录', `
-                <h1>登录天空之城</h1>
-                ${error}
-                <form action="/login" method="POST">
-                    <label>用户名</label>
-                    <input type="text" name="username" required>
-                    <label>密码</label>
-                    <input type="password" name="password" required>
-                    <button type="submit">登 录</button>
-                </form>
-                <a href="/register" class="link">注册账号</a>
-                <a href="/" class="link">返回首页</a>
+                <div class="card" style="max-width:400px; margin:0 auto;">
+                    <h1>登录</h1>
+                    ${error}
+                    <form action="/login" method="POST">
+                        <label>用户名</label>
+                        <input type="text" name="username" required>
+                        <label>密码</label>
+                        <input type="password" name="password" required>
+                        <button type="submit" style="width:100%">登 录</button>
+                    </form>
+                    <div style="text-align:center; margin-top:15px;">
+                        <a href="/register" class="link">注册账号</a>
+                        <a href="/home" class="link">返回日记</a>
+                    </div>
+                </div>
             `));
         } else if (method === 'POST') {
             const params = await getBody(req);
@@ -203,7 +237,7 @@ const server = http.createServer(async (req, res) => {
                     const user = users[0];
                     if (verifyPassword(password, user.salt, user.password)) {
                         setSession(res, username);
-                        res.writeHead(302, { 'Location': '/' }); // Redirect to home
+                        res.writeHead(302, { 'Location': '/home' }); // Redirect to diary list
                         res.end();
                         return;
                     }
@@ -221,16 +255,20 @@ const server = http.createServer(async (req, res) => {
         if (method === 'GET') {
             const error = parsedUrl.query.error ? `<div class="error">${parsedUrl.query.error}</div>` : '';
             res.end(renderAuthPage('注册', `
-                <h1>注册管理员</h1>
-                ${error}
-                <form action="/register" method="POST">
-                    <label>设置用户名</label>
-                    <input type="text" name="username" required>
-                    <label>设置密码</label>
-                    <input type="password" name="password" required>
-                    <button type="submit">注 册</button>
-                </form>
-                <a href="/login" class="link">已有账号？去登录</a>
+                <div class="card" style="max-width:400px; margin:0 auto;">
+                    <h1>注册管理员</h1>
+                    ${error}
+                    <form action="/register" method="POST">
+                        <label>设置用户名</label>
+                        <input type="text" name="username" required>
+                        <label>设置密码</label>
+                        <input type="password" name="password" required>
+                        <button type="submit" style="width:100%">注 册</button>
+                    </form>
+                    <div style="text-align:center; margin-top:15px;">
+                        <a href="/login" class="link">已有账号？去登录</a>
+                    </div>
+                </div>
             `));
         } else if (method === 'POST') {
             const params = await getBody(req);
@@ -242,15 +280,13 @@ const server = http.createServer(async (req, res) => {
             try {
                 const { salt, hash } = hashPassword(password);
                 const sql = `INSERT INTO users (username, password, salt) VALUES (${escapeSql(username)}, '${hash}', '${salt}');`;
-                
                 fs.writeFileSync(TEMP_SQL_FILE, sql);
                 execSync(`sqlite3 "${DB_FILE}" < "${TEMP_SQL_FILE}"`);
                 fs.unlinkSync(TEMP_SQL_FILE);
-
                 res.writeHead(302, { 'Location': '/login?error=' + encodeURIComponent('注册成功，请登录') });
                 res.end();
             } catch (e) {
-                res.writeHead(302, { 'Location': '/register?error=' + encodeURIComponent('注册失败，用户名可能已存在') });
+                res.writeHead(302, { 'Location': '/register?error=' + encodeURIComponent('注册失败') });
                 res.end();
             }
         }
@@ -259,56 +295,169 @@ const server = http.createServer(async (req, res) => {
 
     if (pathname === '/logout') {
         res.setHeader('Set-Cookie', 'sessionId=; HttpOnly; Path=/; Max-Age=0');
-        res.writeHead(302, { 'Location': '/' });
+        res.writeHead(302, { 'Location': '/home' });
         res.end();
         return;
     }
 
-    // 3. Admin Dashboard (Publish) - PROTECTED
+    // 3. Admin Dashboard
     if (pathname === '/admin') {
-        if (!session) {
-            res.writeHead(302, { 'Location': '/login' });
-            res.end();
-            return;
-        }
+        if (!session) { res.writeHead(302, { 'Location': '/login' }); res.end(); return; }
 
-        const success = parsedUrl.query.status === 'success' ? `<div class="success">发布成功！<a href="/" target="_blank">查看首页</a></div>` : '';
+        const success = parsedUrl.query.status === 'success' ? `<div class="success">操作成功！<a href="/home" target="_blank">查看日记</a></div>` : '';
+        const deleted = parsedUrl.query.status === 'deleted' ? `<div class="success">文章已删除。</div>` : '';
 
-        res.end(renderAuthPage('写日记', `
-            <h1>✍️ 写日记</h1>
-            ${success}
-            <form action="/publish" method="POST">
-                <label>标题</label>
-                <input type="text" name="title" required placeholder="今天的日记标题...">
-                <label>日期</label>
-                <input type="date" name="pub_date" value="${new Date().toISOString().split('T')[0]}" required>
-                <label>内容 (支持 HTML)</label>
-                <textarea name="content" style="height:200px;" required placeholder="写下今天的想法..."></textarea>
-                <button type="submit">发布</button>
-            </form>
-            <a href="/" class="link">返回首页</a>
+        // Fetch articles list
+        let articles = [];
+        try {
+            const query = `SELECT id, title, pub_date FROM articles ORDER BY pub_date DESC LIMIT 50`; 
+            const result = execSync(`sqlite3 -json "${DB_FILE}" "${query}"`).toString();
+            articles = JSON.parse(result || '[]');
+        } catch (e) { console.error(e); }
+
+        let rows = articles.map(a => `
+            <tr>
+                <td>${new Date(a.pub_date).toISOString().split('T')[0]}</td>
+                <td>${a.title}</td>
+                <td class="actions">
+                    <a href="/edit?id=${a.id}" class="link" style="margin:0;">编辑</a>
+                    <a href="/delete?id=${a.id}" onclick="return confirm('确定要删除吗？')" class="link" style="margin:0; color:#c62828;">删除</a>
+                </td>
+            </tr>
+        `).join('');
+
+        res.end(renderAuthPage('后台管理', `
+            <div class="nav">
+                <span style="color:#666;">👋 Hi, ${session.username}</span>
+                <div>
+                    <a href="/home" class="link">🏠 返回日记</a>
+                    <a href="/logout" class="link">🚪 退出</a>
+                </div>
+            </div>
+
+            ${success} ${deleted}
+
+            <div class="card">
+                <h1>✍️ 发布新文章</h1>
+                <form action="/publish" method="POST">
+                    <input type="text" name="title" required placeholder="标题">
+                    <input type="date" name="pub_date" value="${new Date().toISOString().split('T')[0]}" required>
+                    <textarea name="content" style="height:150px;" required placeholder="内容..."></textarea>
+                    <button type="submit">发布</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h1>📚 文章管理 (最近50篇)</h1>
+                <table>
+                    <thead><tr><th width="120">日期</th><th>标题</th><th width="100" style="text-align:right">操作</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
         `));
         return;
     }
 
-    // 4. Publish Action
+    // 4. Edit Page
+    if (pathname === '/edit') {
+        if (!session) { res.writeHead(302, { 'Location': '/login' }); res.end(); return; }
+        
+        const id = parsedUrl.query.id;
+        if (!id) { res.end('Missing ID'); return; }
+
+        let article = null;
+        try {
+            const query = `SELECT * FROM articles WHERE id = ${parseInt(id)}`;
+            const result = execSync(`sqlite3 -json "${DB_FILE}" "${query}"`).toString();
+            const rows = JSON.parse(result || '[]');
+            if (rows.length > 0) article = rows[0];
+        } catch (e) { console.error(e); }
+
+        if (!article) { res.end('Article not found'); return; }
+
+        res.end(renderAuthPage('编辑文章', `
+            <div class="card">
+                <h1>📝 编辑文章</h1>
+                <form action="/update" method="POST">
+                    <input type="hidden" name="id" value="${article.id}">
+                    <label>标题</label>
+                    <input type="text" name="title" value="${article.title}" required>
+                    <label>日期</label>
+                    <input type="date" name="pub_date" value="${new Date(article.pub_date).toISOString().split('T')[0]}" required>
+                    <label>内容</label>
+                    <textarea name="content" style="height:300px;" required>${article.content}</textarea>
+                    <button type="submit">保存修改</button>
+                </form>
+                <div style="text-align:center; margin-top:15px;">
+                    <a href="/admin" class="link">取消</a>
+                </div>
+            </div>
+        `));
+        return;
+    }
+
+    // 5. Update Action
+    if (pathname === '/update' && method === 'POST') {
+        if (!session) return res.end('Unauthorized');
+        const params = await getBody(req);
+        const id = params.get('id');
+        const title = params.get('title');
+        const pub_date = params.get('pub_date');
+        const content = params.get('content');
+
+        try {
+            const fullDate = new Date(pub_date).toISOString();
+            const slug = generateSlug(pub_date, title);
+            const excerpt = getExcerpt(content);
+
+            const sql = `UPDATE articles SET title=${escapeSql(title)}, content=${escapeSql(content)}, pub_date=${escapeSql(fullDate)}, slug=${escapeSql(slug)}, excerpt=${escapeSql(excerpt)} WHERE id=${parseInt(id)};`;
+
+            fs.writeFileSync(TEMP_SQL_FILE, sql);
+            execSync(`sqlite3 "${DB_FILE}" < "${TEMP_SQL_FILE}"`);
+            fs.unlinkSync(TEMP_SQL_FILE);
+
+            execSync(`node "${GENERATE_SCRIPT}"`);
+
+            res.writeHead(302, { 'Location': '/admin?status=success' });
+            res.end();
+        } catch (e) {
+            res.end('Error: ' + e.message);
+        }
+        return;
+    }
+
+    // 6. Delete Action
+    if (pathname === '/delete') {
+        if (!session) { res.writeHead(302, { 'Location': '/login' }); res.end(); return; }
+        const id = parsedUrl.query.id;
+        
+        if (id) {
+            try {
+                // Delete file (optional, skipped for simplicity as generator overwrites)
+                const sql = `DELETE FROM articles WHERE id=${parseInt(id)};`;
+                fs.writeFileSync(TEMP_SQL_FILE, sql);
+                execSync(`sqlite3 "${DB_FILE}" < "${TEMP_SQL_FILE}"`);
+                fs.unlinkSync(TEMP_SQL_FILE);
+
+                execSync(`node "${GENERATE_SCRIPT}"`);
+                res.writeHead(302, { 'Location': '/admin?status=deleted' });
+                res.end();
+                return;
+            } catch (e) {
+                res.end('Error: ' + e.message);
+            }
+        }
+    }
+
+    // 7. Publish Action
     if (pathname === '/publish' && method === 'POST') {
         if (!session) return res.end('Unauthorized');
-
         const params = await getBody(req);
         const title = params.get('title');
         const pub_date = params.get('pub_date');
         const content = params.get('content');
 
         try {
-            function generateSlug(d, t) {
-                let hash = 0; for(let i=0;i<t.length;i++) hash = ((hash<<5)-hash)+t.charCodeAt(i)|0;
-                return `article_${d.replace(/-/g,'')}_${Math.abs(hash)}`;
-            }
-            function getExcerpt(c) {
-                return c.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim().substring(0,100)+'...';
-            }
-
             const fullDate = new Date(pub_date).toISOString();
             const slug = generateSlug(pub_date, title);
             const excerpt = getExcerpt(content);
@@ -319,7 +468,6 @@ const server = http.createServer(async (req, res) => {
             execSync(`sqlite3 "${DB_FILE}" < "${TEMP_SQL_FILE}"`);
             fs.unlinkSync(TEMP_SQL_FILE);
 
-            // Re-run static generator
             execSync(`node "${GENERATE_SCRIPT}"`);
 
             res.writeHead(302, { 'Location': '/admin?status=success' });
