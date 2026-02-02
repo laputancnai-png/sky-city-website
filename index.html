@@ -6,9 +6,6 @@
 <title>天空之城</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
 <style>
-/* ────────────────────────────────────────
-   复古手稿风格 (Original Design)
-   ──────────────────────────────────────── */
 :root {
   --paper:      #f0ebe2;
   --ink:        #2c2420;
@@ -20,21 +17,17 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 
 body {
   font-family: var(--font-hand);
   background: var(--paper);
   color: var(--ink);
-  overflow: hidden; /* 隐藏滚动条，作为纯封面 */
+  overflow-x: hidden;
   position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-/* 纸张纹理背景 */
+/* 背景 */
 body::before {
   content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
@@ -44,7 +37,6 @@ body::after {
   background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 40%, rgba(180,170,155,0.25) 100%);
 }
 
-/* 水彩天空层 */
 .watercolor-sky {
   position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 1; pointer-events: none;
 }
@@ -59,20 +51,24 @@ body::after {
   opacity: 0.4;
 }
 
-main { position: relative; z-index: 10; text-align: center; }
+main { position: relative; z-index: 10; }
 
-/* 核心元素 */
+/* ── Hero 区 ── */
+.hero {
+  position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px 80px;
+}
+
+/* 核心元素：可点击 */
 .sketch-island {
-  position: relative; width: 500px; max-width: 90vw; height: auto;
-  margin: 0 auto 30px;
+  position: relative; width: 520px; max-width: 90vw; height: 300px; margin-bottom: 30px;
   animation: gentle-drift 8s ease-in-out infinite;
   cursor: pointer;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.sketch-island:hover { transform: scale(1.02); }
+.sketch-island:hover { transform: scale(1.05) translateY(-5px); }
 
 .sketch-island-img {
-  width: 100%; height: auto; display: block;
+  max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
   filter: sepia(0.06) saturate(0.98) brightness(0.99) contrast(1.01);
 }
 
@@ -80,45 +76,83 @@ main { position: relative; z-index: 10; text-align: center; }
 
 /* 标题 */
 .hero-title {
-  font-family: var(--font-hand); font-size: clamp(2.5rem, 7vw, 4.2rem); color: var(--ink);
+  font-family: var(--font-hand); font-size: clamp(2.8rem, 8vw, 4.6rem); font-weight: 400; letter-spacing: 0.22em; color: var(--ink);
   text-shadow: 1px 1px 0 rgba(44,36,32,0.15); margin-bottom: 10px;
-  letter-spacing: 0.2em;
 }
 .hero-sub {
-  font-size: 0.95rem; color: var(--ink-fade); letter-spacing: 0.35em; font-weight: 300;
-}
-
-/* 进入按钮 */
-.enter-btn {
-  margin-top: 50px;
-  display: inline-block;
-  padding: 12px 36px;
-  border: 1px solid rgba(44,36,32,0.2);
-  border-radius: 50px;
-  color: var(--ink-light);
-  text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  background: rgba(255,255,255,0.3);
-  transition: all 0.4s ease;
-  backdrop-filter: blur(2px);
-}
-.enter-btn:hover {
-  background: var(--water-teal);
-  color: #fff;
-  border-color: var(--water-teal);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(74,124,111,0.2);
+  font-size: 0.88rem; color: var(--ink-fade); letter-spacing: 0.3em; font-weight: 300;
 }
 
 /* 云朵 */
 .sketch-cloud {
-  position: absolute; border-radius: 50%; filter: blur(22px); opacity: 0.4; pointer-events: none;
-  animation: cloud-drift 40s linear infinite; z-index: 2;
+  position: absolute; border-radius: 50%; filter: blur(20px); opacity: 0.35; pointer-events: none;
+  animation: cloud-drift 45s linear infinite;
 }
-.c1 { top: 15%; left: -10%; width: 280px; height: 90px; background: #dceef7; animation-duration: 45s; }
-.c2 { bottom: 20%; right: -5%; width: 240px; height: 80px; background: #e0e8ed; animation-duration: 38s; animation-direction: reverse; }
-@keyframes cloud-drift { from { transform: translateX(-50px); } to { transform: translateX(100vw); } }
+.c1 { top: 12%; left: -8%; width: 260px; height: 90px; background: rgba(200,215,225,0.6); }
+.c2 { top: 60%; right: -5%; width: 220px; height: 70px; background: rgba(190,210,225,0.5); animation-direction: reverse; animation-duration: 50s; }
+@keyframes cloud-drift { from { transform: translateX(-100px); } to { transform: translateX(100vw); } }
+
+/* 向下箭头 */
+.scroll-hint {
+  position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color: var(--ink-fade); font-size: 0.68rem; letter-spacing: 0.25em; opacity: 0.7;
+}
+.arrow-down {
+  width:14px; height:14px; border-right: 1.5px solid var(--ink-fade); border-bottom: 1.5px solid var(--ink-fade);
+  transform: rotate(45deg); animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 0%,100%{ transform:rotate(45deg) translateY(0); opacity:0.5; } 50%{ transform:rotate(45deg) translateY(6px); opacity:1; } }
+
+/* 分隔线 */
+.ink-divider { width: 100%; max-width: 600px; margin: 0 auto; display: block; opacity: 0.2; }
+
+/* ── 关于区域 ── */
+.section-about {
+  padding: 100px 20px 120px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.section-head h2 {
+  font-size: 1.6rem; color: var(--ink); letter-spacing: 0.15em; margin-bottom: 40px; position: relative; display: inline-block;
+}
+.section-head h2::after {
+  content:''; position:absolute; bottom:-8px; left:10%; right:10%; height:1px; background:var(--ink-light); opacity:0.3;
+}
+
+/* 头像 */
+.about-avatar-wrap {
+  width: 96px; height: 96px; margin: 0 auto 30px; position: relative;
+}
+.about-avatar {
+  width:96px; height:96px;
+  border-radius: 48% 52% 50% 50% / 50% 48% 52% 50%; /* 不规则圆 */
+  background: linear-gradient(145deg, #d4c8b4, #c4b8a2);
+  border: 2px solid rgba(44,36,32,0.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 2.2rem; color: var(--ink-light);
+  box-shadow: 3px 3px 0 rgba(44,36,32,0.1);
+}
+.about-stone {
+  position:absolute; width:10px; height:10px; border-radius:50%;
+  background: radial-gradient(circle at 40% 40%, rgba(106,143,168,0.6), rgba(74,124,111,0.3));
+  border: 1px solid rgba(44,36,32,0.25);
+}
+.st1 { top:-5px; right:5px; } .st2 { bottom:0; left:-10px; width:14px; height:14px; opacity:0.6; }
+
+/* 文字 */
+.about-text {
+  font-size: 0.95rem; line-height: 2.4; color: var(--ink-light); font-weight: 300;
+}
+.about-text em { color: var(--water-teal); font-style: normal; font-weight: 600; }
+
+.signature-line {
+  margin-top: 40px; width: 100px; height: 1px; background: var(--ink-fade); margin-left: auto; margin-right: auto; opacity: 0.4;
+}
+
+/* Footer */
+footer { padding: 40px; text-align: center; color: var(--ink-fade); font-size: 0.7rem; letter-spacing: 0.2em; border-top: 1px solid rgba(44,36,32,0.05); }
 
 </style>
 </head>
@@ -129,33 +163,58 @@ main { position: relative; z-index: 10; text-align: center; }
 <div class="sketch-cloud c2"></div>
 
 <main>
-  <div class="sketch-island" onclick="location.href='home.html'">
-    <img class="sketch-island-img" src="skycity_cutout.png" alt="天空之城" />
-  </div>
-  
-  <h1 class="hero-title">天 空 之 城</h1>
-  <p class="hero-sub">记录生活中的每一片云彩</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="sketch-island" onclick="enterWorld()">
+      <img class="sketch-island-img" src="skycity_cutout.png" alt="天空之城" />
+    </div>
+    <div style="cursor:pointer;" onclick="enterWorld()">
+      <h1 class="hero-title">天 空 之 城</h1>
+      <p class="hero-sub">记录生活中的每一片云彩</p>
+    </div>
+    
+    <div class="scroll-hint">
+      <span>向下探索</span>
+      <div class="arrow-down"></div>
+    </div>
+  </section>
 
-  <a href="home.html" class="enter-btn">进入世界</a>
+  <!-- Divider -->
+  <svg class="ink-divider" viewBox="0 0 600 12" fill="none"><path d="M20 6 Q80 3, 150 6 T 300 5 T 450 7 T 580 5" stroke="#6b5f52" stroke-width="1.2" opacity="0.5"/></svg>
+
+  <!-- About -->
+  <section class="section-about">
+    <div class="section-head">
+      <h2>关于这座城</h2>
+    </div>
+    <div class="about-avatar-wrap">
+      <div class="about-avatar">☁</div>
+      <div class="about-stone st1"></div>
+      <div class="about-stone st2"></div>
+    </div>
+    <p class="about-text">
+      这里是我的天空之城——一个漂浮在云层之间的小小角落。<br><br>
+      就像宫崎骏笔下那座被遗忘在高空中的古老城市，<br>
+      我想在这里记录下生活中那些微小却珍贵的瞬间。<br><br>
+      每一篇日记，都是这座城里盛开的一朵花。<br>
+      愿你也能在这里，找到一刻静静的<em>安宁</em>。
+    </p>
+    <div class="signature-line"></div>
+  </section>
+
+  <footer>
+    <p>天空之城 · 用温柔记录生活 · ♡ 2025</p>
+  </footer>
 </main>
 
 <script>
-// 简单的淡出转场
-document.querySelector('.enter-btn').addEventListener('click', function(e) {
-  e.preventDefault();
+function enterWorld() {
   document.body.style.transition = 'opacity 0.8s';
   document.body.style.opacity = '0';
   setTimeout(() => {
     window.location.href = 'home.html';
   }, 800);
-});
-document.querySelector('.sketch-island').addEventListener('click', function() {
-  document.body.style.transition = 'opacity 0.8s';
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    window.location.href = 'home.html';
-  }, 800);
-});
+}
 </script>
 
 </body>
