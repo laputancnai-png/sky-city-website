@@ -4,87 +4,158 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>天空之城</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
 <style>
-  body { margin: 0; padding: 0; overflow: hidden; background: #f0ebe2; font-family: 'Zen Kurenaido', cursive; }
-  
-  /* 全屏水彩背景 */
-  .sky-bg {
-    position: fixed; inset: 0;
-    background: radial-gradient(circle at 50% 120%, #e0f7fa 0%, #b2ebf2 40%, #80deea 70%, #4dd0e1 100%);
-    filter: blur(40px); opacity: 0.6; z-index: -1;
-  }
-  
-  /* 漂浮容器 */
-  .container {
-    height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: relative; z-index: 10;
-  }
-  
-  /* 天空之城图片 (点击入口) */
-  .castle-wrapper {
-    cursor: pointer;
-    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    animation: float 6s ease-in-out infinite;
-  }
-  .castle-wrapper:hover { transform: scale(1.05) translateY(-10px); }
-  .castle-wrapper:active { transform: scale(0.95); }
-  
-  .castle-img {
-    width: 600px; max-width: 90vw; height: auto;
-    filter: sepia(0.1) drop-shadow(0 20px 40px rgba(106,143,168,0.3));
-  }
-  
-  /* 标题 */
-  .title {
-    margin-top: 40px; font-size: 2rem; color: #546e7a; letter-spacing: 0.5em; opacity: 0;
-    animation: fadeUp 2s 1s forwards; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .hint {
-    margin-top: 15px; font-size: 0.9rem; color: #90a4ae; letter-spacing: 0.2em; opacity: 0;
-    animation: fadeUp 2s 2s forwards;
-  }
+/* ────────────────────────────────────────
+   复古手稿风格 (Original Design)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
 
-  /* 动画 */
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  
-  /* 云朵装饰 */
-  .cloud {
-    position: absolute; background: rgba(255,255,255,0.7); border-radius: 50%; filter: blur(30px);
-    animation: drift linear infinite; pointer-events: none;
-  }
-  .c1 { width: 300px; height: 100px; top: 10%; left: -10%; animation-duration: 40s; }
-  .c2 { width: 250px; height: 80px; bottom: 20%; right: -5%; animation-duration: 35s; animation-direction: reverse; }
-  @keyframes drift { from { transform: translateX(-100px); } to { transform: translateX(100vw); } }
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden; /* 隐藏滚动条，作为纯封面 */
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 纸张纹理背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+body::after {
+  content:''; position: fixed; inset:0; z-index:0; pointer-events:none;
+  background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 40%, rgba(180,170,155,0.25) 100%);
+}
+
+/* 水彩天空层 */
+.watercolor-sky {
+  position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 1; pointer-events: none;
+}
+.wc-layer { position: absolute; inset:0; opacity: 0.55; filter: blur(42px); }
+.wc-layer--1 {
+  background: radial-gradient(ellipse 90% 60% at 30% 20%, rgba(106,143,168,0.5) 0%, transparent 65%),
+              radial-gradient(ellipse 70% 50% at 75% 35%, rgba(138,184,204,0.35) 0%, transparent 60%);
+}
+.wc-layer--2 {
+  background: radial-gradient(ellipse 50% 45% at 20% 55%, rgba(106,143,168,0.25) 0%, transparent 70%),
+              radial-gradient(ellipse 80% 50% at 50% 15%, rgba(138,184,204,0.2) 0%, transparent 65%);
+  opacity: 0.4;
+}
+
+main { position: relative; z-index: 10; text-align: center; }
+
+/* 核心元素 */
+.sketch-island {
+  position: relative; width: 500px; max-width: 90vw; height: auto;
+  margin: 0 auto 30px;
+  animation: gentle-drift 8s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.sketch-island:hover { transform: scale(1.02); }
+
+.sketch-island-img {
+  width: 100%; height: auto; display: block;
+  filter: sepia(0.06) saturate(0.98) brightness(0.99) contrast(1.01);
+}
+
+@keyframes gentle-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* 标题 */
+.hero-title {
+  font-family: var(--font-hand); font-size: clamp(2.5rem, 7vw, 4.2rem); color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(44,36,32,0.15); margin-bottom: 10px;
+  letter-spacing: 0.2em;
+}
+.hero-sub {
+  font-size: 0.95rem; color: var(--ink-fade); letter-spacing: 0.35em; font-weight: 300;
+}
+
+/* 进入按钮 */
+.enter-btn {
+  margin-top: 50px;
+  display: inline-block;
+  padding: 12px 36px;
+  border: 1px solid rgba(44,36,32,0.2);
+  border-radius: 50px;
+  color: var(--ink-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+.enter-btn:hover {
+  background: var(--water-teal);
+  color: #fff;
+  border-color: var(--water-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74,124,111,0.2);
+}
+
+/* 云朵 */
+.sketch-cloud {
+  position: absolute; border-radius: 50%; filter: blur(22px); opacity: 0.4; pointer-events: none;
+  animation: cloud-drift 40s linear infinite; z-index: 2;
+}
+.c1 { top: 15%; left: -10%; width: 280px; height: 90px; background: #dceef7; animation-duration: 45s; }
+.c2 { bottom: 20%; right: -5%; width: 240px; height: 80px; background: #e0e8ed; animation-duration: 38s; animation-direction: reverse; }
+@keyframes cloud-drift { from { transform: translateX(-50px); } to { transform: translateX(100vw); } }
+
 </style>
 </head>
 <body>
 
-<div class="sky-bg"></div>
-<div class="cloud c1"></div>
-<div class="cloud c2"></div>
+<div class="watercolor-sky"><div class="wc-layer wc-layer--1"></div><div class="wc-layer wc-layer--2"></div></div>
+<div class="sketch-cloud c1"></div>
+<div class="sketch-cloud c2"></div>
 
-<div class="container">
-  <div class="castle-wrapper" onclick="enterWorld()">
-    <img src="skycity_cutout.png" class="castle-img" alt="天空之城">
+<main>
+  <div class="sketch-island" onclick="location.href='home.html'">
+    <img class="sketch-island-img" src="skycity_cutout.png" alt="天空之城" />
   </div>
-  <div class="title">天空之城</div>
-  <div class="hint">点击进入</div>
-</div>
+  
+  <h1 class="hero-title">天 空 之 城</h1>
+  <p class="hero-sub">记录生活中的每一片云彩</p>
+
+  <a href="home.html" class="enter-btn">进入世界</a>
+</main>
 
 <script>
-  function enterWorld() {
-    // 简单的转场效果
-    document.querySelector('.container').style.opacity = '0';
-    document.querySelector('.container').style.transform = 'scale(1.1)';
-    document.querySelector('.container').style.transition = 'all 0.8s ease';
-    
-    setTimeout(() => {
-      window.location.href = 'home.html';
-    }, 600);
-  }
+// 简单的淡出转场
+document.querySelector('.enter-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.body.style.transition = 'opacity 0.8s';
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    window.location.href = 'home.html';
+  }, 800);
+});
+document.querySelector('.sketch-island').addEventListener('click', function() {
+  document.body.style.transition = 'opacity 0.8s';
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    window.location.href = 'home.html';
+  }, 800);
+});
 </script>
 
 </body>
