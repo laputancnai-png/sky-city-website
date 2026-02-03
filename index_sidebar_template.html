@@ -22,6 +22,9 @@
   --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
 }
 
+/* container to align header with site */
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 0; }
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 
@@ -321,16 +324,22 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
 </head>
 <body>
 
-<div class="auth-bar">{{AUTH_LINKS}}</div>
-
 <div class="watercolor-sky"><div class="wc-layer wc-layer--1"></div><div class="wc-layer wc-layer--2"></div></div>
 
-<main>
-  <!-- 简洁顶部导航区 -->
-  <div style="text-align: center; padding: 40px 0 20px;">
-    <h1 style="font-family: var(--font-hand); font-size: 1.8rem; color: var(--ink); letter-spacing: 0.1em; cursor:pointer;" onclick="location.href='/'">天 空 之 城</h1>
-    <p style="font-size: 0.8rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-top:5px;">Diary World</p>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="brand">
+        <a href="/" title="首页"><img src="skycity_cutout.png" alt="logo" /></a>
+        <a href="/" title="首页"><h1>天空之城</h1></a>
+      </div>
+      <nav>
+        <button class="timeline-btn" onclick="(typeof resetFilter==='function')?resetFilter():location.href='index_sidebar_template.html'">↺ 时光索引</button>
+        {{AUTH_LINKS}}
+      </nav>
+    </header>
   </div>
+
+<main>
 
   <svg class="ink-divider" viewBox="0 0 600 12" fill="none"><path d="M20 6 Q80 3, 150 6 T 300 5 T 450 7 T 580 5" stroke="#6b5f52" stroke-width="1.2" opacity="0.35"/></svg>
 

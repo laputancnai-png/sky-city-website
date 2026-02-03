@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>如果生活是个项目 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <header class="site-header">
+      <div class="brand">
+        <a href="/" title="首页"><img src="/skycity_cutout.png" alt="logo"/></a>
+        <a href="/" title="首页"><h1>天空之城</h1></a>
+      </div>
+      <nav>
+        {{AUTH_LINKS}}
+      </nav>
+    </header>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2009.05.14</div>
+      <h1 class="article-title">如果生活是个项目</h1>
+    </header>
+
+    <div class="article-content">
+      
+<div class="bvMsg" id="msgcns!6774723BA2994DC1!6228">
+<div>
+<p>跟一岁大的孩子玩，对于我这个上班族来说，既是休闲的快乐，又有点像一个工作项目：周一到周五每天工作三小时，周六周日每天工作八小时以上，工作内容是陪他玩，服务她的吃喝拉撒，被他拉着弯腰到处走，然后不停地捡起他有意无意扔在地上的各种东西以及收拾他所到之处创造的残局。相对于我的全职工作来说，这是体力劳动型、并且缺乏逻辑和思维的项目，我的工作价值就在于让他更开心地健康成长。但与我情况相同的女邻居对这个项目的处理方法完全不同，她把这个项目承包给了月薪3500元的保姆，但会偶尔来视察保姆的工作情况。一次邂逅这位幕后妈妈时，她正看着她的孩子把一件件玩具和日用品从袋子中取出扔在地上，然后再一件件放回去。她问她的孩子：“你这样做有什么意义呢？”</p>
+<p>这是惯于高效率解决商务问题的职业人在面对生活时经常问的问题。你不要以为这些聪明人真的不懂这些事情的意义，他们其实是在权衡到底值不值。同样的问题还会发生在以下这些时刻：几个朋友相约闲聊一会儿；去菜场挑性价比最高的那种菜；和爱人静静地呆一会儿；陪老爸老妈看一会儿电视剧……一个律师朋友在恋爱期间跟我玩笑般地提起过：按他向客户收取的一小时300美金的价格计算，这绝对是场昂贵的私人娱乐项目；他的痛苦是有道理的，因为他完全可以把谈恋爱的时间用在工作上，并将之转化成寄给客户的收费通知单。另一个基金管理人则叫他的司机负责接送他的女朋友，然后他掐着秒表过来谈个恋爱再回到办公室继续工作，两个月后，这个恋爱项目谈崩了，对方扔下的分手理由是她搞不清楚是在和他的司机还是和他谈恋爱。</p>
+<p><font color="#ff0000">在工作状态中呆久了的人，容易把这种思维方式带到生活中来，把生活看成一个个项目，然后理性并有效率地去完成，而看上去性价比最高的完成方案通常是外包</font>：请保姆来照顾小孩，请护士来照顾年迈的爸妈，请阿姨来家里做家务和烧饭，因为他们的工作价格会比自己的低很多。<font color="#ff0000">遗憾的是，和工作不同，生活虽然也需要理性对待，但更需要的是感性</font>。孩子需要的不仅仅是陪伴，而是父母的陪伴；父母需要的不仅仅是看电视，而是和你一起看电视。<font color="#ff0000">这显然和以效率和利益为唯一目标的商业思维完全是两个频道。能做到在这两个频道中自由切换不是件容易的事，但却是快乐生活所必需的事。　　</font></p>
+</div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

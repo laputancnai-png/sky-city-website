@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>一些心理寓言 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <header class="site-header" style="max-width:800px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;">
+  <div class="brand" style="display:flex;align-items:center;gap:10px;">
+    <a href="/" title="首页"><img src="/skycity_cutout.png" alt="logo" style="width:40px;height:40px;border-radius:6px;"/></a>
+    <a href="/" title="首页" style="text-decoration:none;color:var(--ink);font-weight:600;">天空之城</a>
+  </div>
+  <div class="auth-bar">{{AUTH_LINKS}}</div>
+</header>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2010.10.29</div>
+      <h1 class="article-title">一些心理寓言</h1>
+    </header>
+
+    <div class="article-content">
+      
+<p>（一）成长的寓言：做一棵永远成长的苹果树<br/>
+　　一棵苹果树，终于结果了。<br/>
+　　第一年，它结了10个苹果，9个被拿走，自己得到1个。对此，苹果树愤愤不平，于是自断经脉，拒绝成长。第二年，它结了5个苹果，4个被拿走，自己得到1个。“哈哈，去年我得到了10％，今年得到20％！翻了一番。”这棵苹果树心理平衡了。<br/>
+　　但是，它还可以这样：继续成长。譬如，第二年，它结了100个果子，被拿走90个，自己得到10个。<br/>
+　　很可能，它被拿走99个，自己得到1个。但没关系，它还可以继续成长，第三年结1000个果子……<br/>
+　　其实，得到多少果子不是最重要的。最重要的是，苹果树在成长！等苹果树长成参天大树的时候，那些曾阻碍它成长的力量都会微弱到可以忽略。真的，不要太在乎果子，成长是最重要的。</p>
+<p>（二）动机的寓言：孩子在为谁而玩<br/>
+　一群孩子在一位老人家门前嬉闹，叫声连天。几天过去，老人难以忍受。<br/>
+　　于是，他出来给了每个孩子25美分，对他们说：“你们让这儿变得很热闹，我觉得自己年轻了不少，这点钱表示谢意。”<br/>
+　　孩子们很高兴，第二天仍然来了，一如既往地嬉闹。老人再出来，给了每个孩子15美分。他解释说，自己没有收入，只能少给一些。15美分也还可以吧，孩子仍然兴高采烈地走了。<br/>
+　　第三天，老人只给了每个孩子5美分。<br/>
+ 　孩子们勃然大怒，“一天才5美分，知不知道我们多辛苦！”他们向老人发誓，他们再也不会为他玩了！</p>
+<p>（三）规划的寓言：把一张纸折叠51次<br/>
+　想象一下，你手里有一张足够大的白纸。现在，你的任务是，把它折叠51次。那么，它有多高？<br/>
+　一个冰箱？一层楼？或者一栋摩天大厦那么高？不是，差太多了，这个厚度超过了地球和太阳之间的距离。</p>
+<p>（四）逃避的寓言：小猫逃开影子的招数<br/>
+　“影子真讨厌！”小猫汤姆和托比都这样想，“我们一定要摆脱它。”<br/>
+　　然而，无论走到哪里，汤姆和托比发现，只要一出现阳光，它们就会看到令它们抓狂的自己的影子。<br/>
+　　不过，汤姆和托比最后终于都找到了各自的解决办法。汤姆的方法是，永远闭着眼睛。托比的办法则是，永远待在其他东西的阴影里。</p>
+<p>（五）行动的寓言———螃蟹、猫头鹰和蝙蝠</p>
+<p>　　螃蟹、猫头鹰和蝙蝠去上恶习补习班。数年过后，它们都顺利毕业并获得博士学位。不过，螃蟹仍横行，猫头鹰仍白天睡觉晚上活动，蝙蝠仍倒悬。</p>
+<p>（六）放弃的寓言：蜜蜂与鲜花<br/>
+　　玫瑰花枯萎了，蜜蜂仍拼命吮吸，因为它以前从这朵花上吮吸过甜蜜。但是，现在在这朵花上，蜜蜂吮吸的是毒汁。<br/>
+　　蜜蜂知道这一点，因为毒汁苦涩，与以前的味道是天壤之别。于是，蜜蜂愤不过，它吸一口就抬起头来向整个世界抱怨，为什么味道变了？！<br/>
+　　终于有一天，不知道是什么原因，蜜蜂振动翅膀，飞高了一点。这时，它发现，枯萎的玫瑰花周围，处处是鲜花。</p>
+<p>（七）亲密的寓言：独一无二的玫瑰<br/>
+　　小王子有一个小小的星球，星球上忽然绽放了一朵娇艳的玫瑰花。以前，这个星球上只有一些无名的小花，小王子从来没有见过这么美丽的花，他爱上这朵玫瑰，细心地呵护她。<br/>
+　　那一段日子，他以为，这是一朵人世间唯一的花，只有他的星球上才有，其他的地方都不存在。<br/>
+　　然而，等他来到地球上，发现仅仅一个花园里就有5000朵完全一样的这种花朵。这时，他才知道，他有的只是一朵普通的花。<br/>
+　　一开始，这个发现，让小王子非常伤心。但最后，小王子明白，尽管世界上有无数朵玫瑰花，但他的星球上那朵，仍然是独一无二的，因为那朵玫瑰花，他浇灌过，给她罩过花罩，用屏风保护过，除过她身上的毛虫，还倾听过她的怨艾和自诩，聆听过她的沉默……一句话，他驯服了她，她也驯服了他，她是他独一无二的玫瑰。<br/>
+　　“正因为你为你的玫瑰花费了时间，这才使你的玫瑰变得如此重要。”一只被小王子驯服的狐狸对他说。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

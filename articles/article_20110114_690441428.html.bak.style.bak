@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>[转载]投资实践：构建稳定而有效的投资组合 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <nav class="nav-bar">
+    <a href="../home.html" class="home-link">返回天空之城</a>
+  </nav>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2011.01.14</div>
+      <h1 class="article-title">[转载]投资实践：构建稳定而有效的投资组合</h1>
+    </header>
+
+    <div class="article-content">
+      
+<p>从前并不重视投资组合的管理，只是近年才开始重视起来。实际上稳定而有效的投资组合管理非常重要，但是往往被人忽略。尤其在2010年，对于价值投资者而言确实不是一个好年景，因为不同股票的估价高的极高，低的极低。并且高估最厉害的一直是表现最好的，而低估最厉害的则一直是表现最差的。因此不少价值投资者收益甚微。当然从短期的角度看，这也没有什么。因为我们的市场本来就是极其不精确的，价格反应过度，市场完全颠倒。但是从长期的角度看，风险最高的股票未来的期望收益率是最低的，风险最低的股票未来的期望收益率反而是最高的。而价值投资恰恰只能在一个较长的时期才能呈现出它的优势。所以问题的关键在于如何构建一个稳定而有效的投资组合。按照罗伯特·汉格斯特龙的话说，“<span style="font-size:small;">我现在比以往更深刻地认识到，取得高于平均的收益绝非仅仅是选股的问题，也是你如何构建你的投资组合的问题。”</span></p>
+<p>    以沃伦·巴菲特的投资组合为例。2009年底巴菲特私人股票投资组合共有10只股票：富国银行、强生、宝洁、卡夫、沃尔玛、美国银行、通用电气、UPS、埃克森美孚、英格索兰。很显然，这个组合具有强大的品牌吸引力，并且几乎都是路人皆知的“百年老店”。在行业分布上涵盖了银行、制药、日化、食品、商业连锁以及石油、空调等。其持股市值比例分别是：富国银行22%，强生17%，宝洁14%，卡夫12%，沃尔玛12%，美国银行10%，通用电气7%，UPS4%，埃克森美孚2%，英格索兰1%。总计其市值近19亿美元，但却只有10只股票，其中前2只股票接近四成，前3只股票占53%，虽然富国银行与美国银行属于重叠，但在组合上也仅仅占32%。巴菲特投资组合的变化很小，其中7只股票持股始终没有变化，同时又分布于许多行业，既集中又简单。一年中更没有进行任何的波段操作。采取的策略前后一致：谨慎买入与谨慎卖出。“稳定”是其投资组合管理的一个最大特点。</p>
+<p>    依据巴菲特投资组合路线图，两年前我们就开始谋划构建一个稳定而有效的投资组合，这个投资组合应该保持简洁明了，稳定且具有连续性。主导思想正如提摩西·维克所说，过去10年来，许多投资俱乐部仅以12只至15只股票即获得突出的报酬率，那些大多是有品牌的消费产品的股票。经过两年时间调整，目前的投资组合为：银行、商业连锁、服装辅助、医疗服务以及机械工具。其中银行19%、商业连锁17%、服装辅助21%、医疗服务10%、机械工具9%，现金20%。5只股票中，银行、商业连锁于2008年12月买入，服装辅助于2009年2月买入，只有医疗服务以及机械工具于2010年第三季度买入。其重心倾向于日常消费品、社会服务等传统产业上，并没有太多的“科技含量”。对于有色金属以及新材料、新能源、低碳等一些新兴行业则几乎没有涉猎。不敢断言这就是一</p>
+<p>个最优的投资组合，但应该是一个稳定而有效的投资组合——大致能确保在坏年景中取得较好的投资回报。    </p>
+<p>    关于现金问题，应该将其视为投资组合的组成部分，一个没有大量现金的投资组合绝不是一个好组合，大量现金的重要性对于一个投资组合是不言而喻。成功的投资者往往持有大量现金，塞思·卡拉曼就经常保持45%-50%的现金。最近看了一篇文章，其中有一个叫琳达·格林布莱特（Linda Greenblatt)的投资者，她掌管着一个基金，曾被邀至哥伦比亚大学商学院讲课。她在对学生讲课时说，她总是在手里积累大量现金，并且一点也不担心。她的投资比例从来没有超过50%。也就是说，她一直都是一半资产为现金，并且她还是认为这个比例还是太低了，需要增加。为什么呢？因为要耐心等待恰当的机会出现。鳄鱼可以两年不吃东西也不会饿死。它的腿很短，移动很慢，只能在河床上等待。假如猎物不出现，那么就睡觉。但是一旦猎物靠近它，它就咬住它，吃掉它，这就是“鳄鱼方法”。我们应该牢记鳄鱼的捕猎风格。这就是现金管理的意义。</p>
+<p>    巴菲特曾说，“我们的投资组合持续保持集中、简单的风格，真正重要的投资概念通常可以用简单的话语来作说明，我们偏爱具有持续竞争力并且由才能兼具、以股东利益为导向的经理人所经营的优良企业，只要它们确实拥有这些特质，而且我们能够以合理的价格买进，则出错的概率可以说是微乎其微。”对此我深信不疑并且身体力行。如果投资者构建一个像巴菲特式的稳定而有效的投资组合，就意味着在牛市中可以高歌猛进，在熊市中可以坐享其成。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

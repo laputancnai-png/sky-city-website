@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>投资就是一种收藏 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <header class="site-header" style="max-width:800px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;">
+  <div class="brand" style="display:flex;align-items:center;gap:10px;">
+    <a href="/" title="首页"><img src="/skycity_cutout.png" alt="logo" style="width:52px;height:52px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.12);"/></a>
+    <a href="/" title="首页" style="text-decoration:none;color:var(--ink);font-weight:600;">天空之城</a>
+  </div>
+  <div class="auth-bar">{{AUTH_LINKS}}</div>
+</header>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2008.02.15</div>
+      <h1 class="article-title">投资就是一种收藏</h1>
+    </header>
+
+    <div class="article-content">
+      
+<div class="bvMsg" id="msgcns!6774723BA2994DC1!3972">
+<div>
+<div><font color="#000000">全世界的人有三种致富模式:一是打工，二是创业，三是投资，知与行的距离，是世界上最远的距离。每个人用不同的方式创造自己的财富。有一句话叫做“投资致富胜过勤劳致富”。如果靠打工致富，你的财富目标大概达到百万级；如果靠创业致富，财富目标达到千万级；如果靠投资致富，财富目标可以达到亿万级。投资虽说有风险，但不做投资的风险更大。在美国历史上从1900年到2000年的100年间，货币贬值54倍，换句话来讲，一美元的购买力，100年以后只有1/54。
+<p>投资是永恒时间的抗衡 理财致富是“马拉松竞赛”而非“百米冲刺”，比的是耐力而不是爆发力。对于短期无法预测而长期具有高报酬率的投资，最安全的投资策略是：先投资，等待机会再投资。</p>
+<p>投资就是一种收藏 不用看盘，不用技术分析，也不用打听消息，只需要常识，选股没有独门秘籍，首先选择中国最好的行业，寻找一个长期向好的行业很重要。其次是选择这个行业中最好的公司，那些具有广阔市场、能够抵御通涨、能够长期生存下去的、有足够利润率的企业应该是值得投资的，而且长期投资想不赚钱都很难。纵观巴菲特投资的那些伟大的企业无非是这几大类，消费品、制药、石油采掘、房地产、金融服务、连锁零售、保险等，·选择了一只好的股票，是决定投资胜负的关键。你就能够成为中国股市的大赢家，成为这个财富膨胀和转移时代最大的受益者。</p>
+<p>一个笃定的价值投资者<br/>我们说选价值投资 你实际上是选择了一条人迹更少的路 <br/>我们该如何面对不确定的未来<br/>你到底要持有什么样的资产 来穿越这个时代 我觉得这是个很严肃的事情 <br/>熊市一样赚大钱<br/>你发现这个好企业 实际上 不是说 现在牛市来了 它涨了几倍 而是说什么 在牛市来之前的前两三年 这些真正好的企业已经在涨了 <br/>如何面对市场波动<br/>比如说 市场回调跌的很厉害 您会不会在遇见这个跌势刚刚形成的时候抛股票<br/>我们不抛 我可能就是 我们还接着买 我们是这样一个做法 <br/>投资无秘密<br/>我觉得投资本身没有秘密 我能看到的 别人都能看到 <br/>坚持是最艰难的选择<br/>这种坚持实际上是非常非常困难的 你让心灵坚持是最难的</p></font></div>
+</div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

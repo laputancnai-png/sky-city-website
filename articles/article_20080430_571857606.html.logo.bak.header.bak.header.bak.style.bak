@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>我们必须相信 - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <header class="site-header" style="max-width:800px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;">
+  <div class="brand" style="display:flex;align-items:center;gap:10px;">
+    <a href="/" title="首页"><img src="/skycity_cutout.png" alt="logo" style="width:40px;height:40px;border-radius:6px;"/></a>
+    <a href="/" title="首页" style="text-decoration:none;color:var(--ink);font-weight:600;">天空之城</a>
+  </div>
+  <div class="auth-bar">{{AUTH_LINKS}}</div>
+</header>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2008.04.30</div>
+      <h1 class="article-title">我们必须相信</h1>
+    </header>
+
+    <div class="article-content">
+      
+<div class="bvMsg" id="msgcns!6774723BA2994DC1!5008">
+<div>
+<p align="left"><b><font color="#ff0000">目前我们所拥有的，不论顺境、逆境，都是对我们最好的安排。</font></b>  </p>
+<p align="left">北欧一座教堂里，有一尊耶稣被钉在十字架上的神像，  </p>
+<p align="left">大小和一般人差不多。  </p>
+<p align="left">因为有求必应，因此专程到这里祈祷、膜拜的人特别多，  </p>
+<p align="left">几乎可以用门庭若市来形容。  </p>
+<p align="left">教堂里有位看门的人，  </p>
+<p align="left">看十字架上的耶稣每天要应付这么多人的要求，  </p>
+<p align="left">觉得于心不忍，他希望能分担耶稣的辛苦。   </p>
+<p align="left">有一天他祈祷时，向耶稣表明这份心愿。  </p>
+<p align="left">意外地，他听到一个声音，说：  </p>
+<p align="left">“好啊！我下来为你看门，你上来钉在十字架上。  </p>
+<p align="left">但是，不论你看到什么、听到什么，都不可以说一句话。”  </p>
+<p align="left">这位先生觉得，这个要求简单。  </p>
+<p align="left">于是耶稣下来，看门的先生上去，像耶稣被钉十字架般地伸张双臂，  </p>
+<p align="left">本来神像就雕刻得和真人差不多，所以来膜拜的群众也没有察觉，  </p>
+<p align="left">这位先生也依照先前的约定，静默不语聆听信徒的心声。 </p>
+<p align="left">来往的人络绎不绝，他们的祈求，  </p>
+<p align="left">有合理的，有不合理的，千奇百怪不一而足。  </p>
+<p align="left">但无论如何，他都强忍下来没有说话，  </p>
+<p align="left">因为他必须遵守先前的承诺。  </p>
+<p align="left">有一天，来了一位富商，当富商祈祷完后，  </p>
+<p align="left">竟然忘记手边的钱袋便离去。  </p>
+<p align="left">他看在眼里，真想叫这位富商回来，  </p>
+<p align="left">但是，他憋着不能说。 </p>
+<p align="left">接着来了一位三餐不继的穷人，  </p>
+<p align="left">他祈祷耶稣能帮助他渡过生活的难关。  </p>
+<p align="left">当要离去时，他发现先前那位富商留下的袋子，  </p>
+<p align="left">打开一看，里面全是钱。  </p>
+<p align="left">穷人高兴得不得了：  </p>
+<p align="left">“耶稣真好，有求必应！”万分感谢地离去。  </p>
+<p align="left">而十字架上，假的耶稣看在眼里，很想告诉他，这不是你的。  </p>
+<p align="left">但是，约定在先，他仍然憋着不能说。 </p>
+<p align="left">接下来有一位要出海远行的年轻人来到，  </p>
+<p align="left">他来祈求耶稣降福他平安。  </p>
+<p align="left">正当要离去时，富商冲进来，抓住年轻人的衣襟，  </p>
+<p align="left">要年轻人还钱，年轻人不明就里，两人吵了起来。  </p>
+<p align="left">这个时候，十字架上假装的耶稣终于忍不住开口说话了。  </p>
+<p align="left">既然事情清楚了，富商便去找冒牌耶稣所形容的穷人，  </p>
+<p align="left">而年轻人则匆匆离去，生怕搭不上船。 </p>
+<p align="left">假装成看门人的耶稣出现了，指着十字架说：  </p>
+<p align="left">“你下来吧！那个位置你没有资格在那里了。”  </p>
+<p align="left">看门人说：“我把真相说出来，主持了公道，难道不对吗？”  </p>
+<p align="left">耶稣说：“你懂得什么？那位富商并不缺钱，  </p>
+<p align="left">他那袋钱不过是用来挥霍；  </p>
+<p align="left">可是对那穷人来说，却可以解决一家大小的生计；  </p>
+<p align="left">最可怜的是那位年轻人，如果富商一直纠缠下去，  </p>
+<p align="left">延误了他出海的时间，他还能保住一条命，  </p>
+<p align="left">而现在，他所搭乘的船将沉入海中。” </p>
+<p align="left"> </p>
+<p align="left">这是一个听起来像笑话的寓言故事，  </p>
+<p align="left">却透露出：在现实生活中，  </p>
+<p align="left">我们常自认为怎么样才是最好的，但事与愿违。  </p>
+<p align="left">我们必须相信：目前我们所拥有的，  </p>
+<p align="left">不论顺境、逆境，都是对我们最好的安排。  </p>
+<p align="left">若能如此，我们才能在顺境中感恩；在逆境中依旧心存喜乐。  </p>
+<p align="left">人生的事，没有十全十美；但是，我愿认真活在当下。 </p>
+<p align="left">   </p>
+<p align="left">送给你一段马斯洛说过的话：  </p>
+<p align="left">“心若改变，你的态度跟着改变；  </p>
+<p align="left">态度改变，你的习惯跟着改变；  </p>
+<p align="left">习惯改变，你的性格跟着改变；  </p>
+<p align="left">性格改变，你的人生跟着改变。  </p>
+<p align="left">在顺境中感恩，  </p>
+<p align="left">在逆境中依旧心存喜乐，  </p>
+<p align="left">认真活在当下。” </p></div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

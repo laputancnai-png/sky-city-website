@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>世界50件开心幸福事，你经历了多少？ - 天空之城</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Zen+Kurenaido&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+/* ────────────────────────────────────────
+   复用主页核心样式 (Simplified for Articles)
+   ──────────────────────────────────────── */
+:root {
+  --paper:      #f0ebe2;
+  --ink:        #2c2420;
+  --ink-light:  #6b5f52;
+  --ink-fade:   #9a8e7f;
+  --water-blue: #6a8fa8;
+  --water-teal: #4a7c6f;
+  --warm-rust:  #b06840;
+  --font-hand: 'Zen Kurenaido', 'Yuji Syuku', 'Noto Serif JP', serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: var(--font-hand);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 纸张噪点背景 */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* 水彩装饰层 */
+.watercolor-bg {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
+  background: radial-gradient(circle at 10% 20%, rgba(106,143,168,0.4), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(74,124,111,0.3), transparent 40%);
+  filter: blur(30px);
+}
+
+main { position: relative; z-index: 2; padding: 40px 20px 80px; }
+
+/* 导航栏 */
+.nav-bar {
+  max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: center;
+}
+.home-link {
+  text-decoration: none; color: var(--ink-light); font-size: 1.1rem; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+}
+.home-link:hover { color: var(--warm-rust); }
+.home-link::before { content: '←'; font-family: sans-serif; }
+
+/* ── 文章纸张容器 ── */
+.article-paper {
+  max-width: 800px; margin: 0 auto; background: linear-gradient(175deg, #fdfbf7, #f4efe4);
+  padding: 60px 50px 80px; box-shadow: 0 4px 20px rgba(44,36,32,0.08); position: relative; border-radius: 2px;
+}
+.article-paper::before {
+  /* 左侧装订线孔 */
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; border-left: 2px dotted rgba(44,36,32,0.1);
+}
+.article-paper::after {
+  /* 右上角折痕 */
+  content:''; position:absolute; top:0; right:0; width:40px; height:40px;
+  background: linear-gradient(225deg, var(--paper) 50%, transparent 50%);
+  box-shadow: -2px 2px 3px rgba(0,0,0,0.05);
+}
+
+/* 文章头部 */
+.article-header {
+  text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid rgba(44,36,32,0.15);
+}
+.article-date {
+  font-size: 0.9rem; color: var(--ink-fade); letter-spacing: 0.2em; margin-bottom: 12px; font-family: 'Noto Serif JP', serif;
+}
+.article-title {
+  font-size: 2.2rem; font-weight: 600; line-height: 1.4; color: var(--ink); text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* 文章正文 */
+.article-content {
+  font-size: 1.05rem; line-height: 2; color: var(--ink-light); font-weight: 300; text-align: justify;
+}
+.article-content p { margin-bottom: 24px; }
+.article-content strong { font-weight: 600; color: var(--ink); }
+.article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
+.article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 20px 0; border: 4px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); filter: sepia(0.15) contrast(0.95); }
+.article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
+.article-content a:hover { border-bottom-style: solid; }
+
+/* 底部签名区 */
+.article-footer { margin-top: 60px; text-align: center; }
+.stamp {
+  display: inline-block; border: 2px solid var(--warm-rust); color: var(--warm-rust); padding: 4px 12px; font-size: 0.8rem; transform: rotate(-12deg); font-weight: 600; letter-spacing: 0.1em; opacity: 0.8; border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .article-paper { padding: 40px 24px; }
+  .article-title { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+<div class="watercolor-bg"></div>
+<main>
+  <header class="site-header" style="max-width:800px;margin:0 auto 24px;display:flex;align-items:center;justify-content:space-between;">
+  <div class="brand" style="display:flex;align-items:center;gap:10px;">
+    <a href="/" title="首页"><img src="/skycity_cutout.png" alt="logo" style="width:40px;height:40px;border-radius:6px;"/></a>
+    <a href="/" title="首页" style="text-decoration:none;color:var(--ink);font-weight:600;">天空之城</a>
+  </div>
+  <div class="auth-bar">{{AUTH_LINKS}}</div>
+</header>
+
+  <article class="article-paper">
+    <header class="article-header">
+      <div class="article-date">2008.12.04</div>
+      <h1 class="article-title">世界50件开心幸福事，你经历了多少？</h1>
+    </header>
+
+    <div class="article-content">
+      
+<div class="bvMsg" id="msgcns!6774723BA2994DC1!5102">
+<div>1.花开时节，有赏花的心情。――闲情逸致也需要培养！ 
+<p>2.瓜果应季，喜欢瓜果的人牙好，胃口好。――能吃是福。 </p>
+<p>3.感受春天的微风轻抚最初萌芽的青草和树叶，把稚嫩的清香散播到四面八方。――享受生活的每一时刻。 </p>
+<p>4.酷热的夏天，享受一场豪雨和随之而来的凉爽、清新、草木苍翠。――随遇而安。 </p>
+<p>5.在秋天火一样的红叶面前停下脚步，体味凋谢前最盛大的灿烂。――自然的风景带给人的愉悦是生命最珍贵的礼物。 </p>
+<p>6.站在温暖的窗户后面欣赏大雪最初的样子：轻盈、迷蒙、笼罩大地，洁白还无人践踏。――我本洁来还洁去。 </p>
+<p>7.喝酒的时候，是心在应对，而不是肠胃在应对。如同焚香，要的只是一种香的氛围，而不是把香氛当氧气，这也是酒逢知已饮的本意。――酒不醉人人自醉。此中真意自心知。 </p>
+<p>8.有很够分量的情敌，你却不战而胜，似乎比用大笔钱买到极昂贵东西还快乐。这是棋逢对手或物有所值的含义之一。――不是敌人不抵抗，而是我军太狡猾。 </p>
+<p>9.生命中永存一个可以单相思的人，又不是一日不见如隔三秋的情怀，美中不足的生活就有了完美的寄托，如同笃信基督的教徒有一个上帝。――真好，有时候确需一种 如此情怀，深埋心底，无需表白。 </p>
+<p>10.在花季结束的时候，采摘到最后一朵玫瑰。多情的人，最后一次恋情以最美的方式成为标本。――留一缕芳魂，淡淡幽香，而已。 </p>
+<p>11.说话投机：有些迷乱豁然开朗，如同苗圃除尽了杂草；有些感觉处处共鸣，如同鲜花映照在清潭。――酒逢知己千杯少，话不投机半句多。 </p>
+<p>12.没有预谋的闲聊空谈，却生出实际漂亮的事情来。如同野游采摘到美味的山果。――意外之惊喜。 </p>
+<p>13.一张好碟，自己单独看一次，和自己喜欢的人看一次。――知音难求。 </p>
+<p>14.在稠人广众之中或者车水马龙的街头，听一首老歌，独自回味自己的心事。――人群中我孤独，但我存在。 </p>
+<p>15.在人群中遇到一个和自己喜欢同一个品牌的人，彼此同此接近，更发现还有很多相同和相通之处。――志同道合？未必，想法略有相近而已。 </p>
+<p>16.有一天，突然发现自己获得了与环境融洽相处的能力，比如，在给朋友当伴娘的时候，你是新娘之外，显得最出众的女人，不抢朋友的风头给朋友长了脸，你够仗义；做配角也是最优秀的，你除了称职还不委屈自己。――那就可以再世为人了。 </p>
+<p>17.有人背后称赞你，被你无意听到或者有人转告你。――宠辱不惊，去留无意。 </p>
+<p>18.有一个可以回去的故乡，哪里有老父母、老房子，小时候爬过的哪棵树以及和自己一起爬过树的伙伴。――那是异常温馨的一种感觉。不用真的去做，就让他甜甜地待在那里好了。 </p>
+<p>19.有几个朋友，无论空间距离远近，你们之间的感觉是哪样的：相见亦无事，别来常思君。――人生得一知己，足以。 </p>
+<p>20.和老朋友尽无挂碍地度过一个怀旧的下午。――点滴享受就是幸福。 </p>
+<p>21.闹些小矛盾之后与老朋友和解，丢失不起的最后并没有丢失。――人生苦短，争无可争。 </p>
+<p>22.无论你是什么年龄，你有一个忘年交，是那种你在你觉得幼雅的时候,有一个比你大的忘年交;在你觉得自己老气的时候,有一个比你小的忘年交。――太美妙了。 </p>
+<p>23.有一个异性死党，你们不谈性，而且彼此的配偶相信你们。――那一层纱，撕开就没了美感。 </p>
+<p>24.循规蹈矩很久了，脱离常规去做一件事情，得到意想不到的收获。――曲径通幽，干吗一定要走阳关大道？ </p>
+<p>25.自己做的一件事情有了好的结果，但那只是花了你些许力气而不是经过了千辛万苦。实际上，来得容易的成功会给你更多快乐。――付出一切才能换来的成功会让变态。 </p>
+<p>26.在父母三十周年结婚纪念日，你发现你们生活的城市正在全线放映经典爱情片，买到了两张豪华包厢的电影票作为礼物送给他们。――这个恐怕只能想一下了。 </p>
+<p>27.看着婴儿天天长大，不断呈现新气象，仿佛你一直伫立在玫瑰前，疑视花朵次第开放。――我只能说生命是一个奇迹。 </p>
+<p>28.几岁的孩子会玩高级游戏，觉得你很笨，非要教你。――长江后浪推前浪，前浪只好死在沙滩上了。 </p>
+<p>29.无论你事业多么成功，你都没有被人忘记是一个女人。――女人，无论做什么，首先都是一个女人，其次才有可能成为女强人、才女、美女之类。 </p>
+<p>30.在你打扮的最漂亮的那天，在街上偶遇你很在乎的人。――顺其自然。 </p>
+<p>31.生活中充满交易行为，在买进的时候，你得到的可以说物美价廉；在卖出的时候的，你提供的可以说货真价实。――差不多就得恕?</p>
+<p>32.过了四十岁，你在走进医院时还像第一天上幼儿园一样找不到方向，被老病号和医生一起嘲笑，真是一件特别快乐的事情。――难得糊涂。 </p>
+<p>33.在一件事情即将办成最后环节中，你被卡住了，碰巧遇到一个没有交情的人帮了你，在道谢的时候才知道，无意中你曾给过他恩惠。事情成了，而且善行结出的善果 滋味甘甜。――善恶因果皆有报，我施恩于人不可记，人施恩于我却不可不记。 </p>
+<p>34.即使买衣服是为了赚钱，但买衣服的人的确选中了他们穿在身上最好看的衣服。――衣服淘汰快点，常换常新。 </p>
+<p>35.收拾书架的时候，发现一张没有支取的存单。数目不大，但人有遗忘的财富，无论是雪中送炭还是锦上添花，都表明你的生活其实很有余地。――知足者常乐。 </p>
+<p>36.那个远在天涯的人，你在乎的喜欢的，突然像邮差哪样在一个平常的日子按响了你的门铃。快乐陡然来临，一点没有企盼给你的消耗。――意外，意外，其实并不欣 赏这种意外，假如事过境迁之后。 </p>
+<p>37.在堵车的时候选对了车道。看到胳膊边儿上水泄不通，自己却畅通无阻，那个时候，对自己的直觉、运气、经验和先见之明都没有办法不满意，是捡了便宜的快乐和自大狂的快乐。――吼吼，运气就是这么好！ </p>
+<p>38.两辆车追尾了，肇事者立刻下了车赔礼，受害者却微笑着挥挥手，前面绿灯刚好亮了。这个世界有人在主动承担自己的过失，有人在大度地原谅，你正好做了旁观者。――世界是多么地美好啊，阿门！ </p>
+<p>39.早上醒来记得夜里的美梦。美梦不多且不丢失，实在很难得。――梦，安慰一下自己在现实中千疮百孔的心灵。 </p>
+<p>40.做了噩梦及时醒来，发现一切不是真的。――还好，谢天谢地。 </p>
+<p>41.在自己扔的香蕉皮上差点跌倒，立刻把它拾起来放到垃圾桶，整个过程一直没有别人的眼光。对于希望完善自己的人来说，把结果结大家，把过程给自己是快乐的。 ――天作孽，犹可恕；自作孽，不可活。 </p>
+<p>42.回忆中的旅途生活。腰酸背疼过去了，腰酸背疼得来东西却在。――最值得记忆的往往是千心万苦的过程。 </p>
+<p>43.有人告诉你的幸福的指标，你发现自己的情形和哪些指标多数吻合。――求仁得仁，是谓幸福。 </p>
+<p>44.看到流星坠落或者昙花开放。短暂不停留的东西，却给自己留下了永恒，只因为它来的时候，你等到了，或者巧遇到了。――缘分。 </p>
+<p>45.用磕磕绊绊的英语给老外指了路，即使自己不足，也能帮助别人。――多学一门外语多好，唉，谁让他听不懂广州话。广州话跟外语也差不多。 </p>
+<p>46.把一个哭着的孩子或少女逗笑，痛惜美好得到的快乐就像亲吻玫瑰。――陪他哇哇大叫一场，自己也爽。 </p>
+<p>47.醒来发现上班已经迟到，但突然记起是周末。――太幸福了，靠，继续昏睡百年。 </p>
+<p>48.从人群中抽身离去，仿佛消失了，一个人韬光养晦，直到有一天开门出去，天空是另外的天空，人是别样的人群。――我思故我在。 </p>
+<p>49.感觉自己宁静得像山野水潭的时候。――动处静得来。 </p>
+<p>50.听齐秦唱“人能仰望，就能幸福”，自己也觉得是哪么一回事。――凡事不能想太多，想的多是没用的 </p></div>
+</div>
+
+    </div>
+
+    <footer class="article-footer">
+      <div class="stamp">Laputan</div>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

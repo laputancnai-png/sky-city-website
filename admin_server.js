@@ -166,14 +166,30 @@ function serveStaticIfExists(res, reqPath){ const p = path.join(BASE_DIR, reqPat
                 }
 
                 // Assets (images, css, js, mp3, articles)
-                if (pathname.startsWith('/articles/') || pathname.match(/\.(png|jpg|css|js|mp3)$/)) {
-                    const safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
-                    const fullPath = path.join(BASE_DIR, safePath);
-                    const injectSession = pathname.endsWith('.html') ? session : null;
-                    if (fs.existsSync(fullPath)) { serveStatic(res, fullPath, injectSession); return; }
-                }
+                    // Assets (images, css, js, mp3) and articles directory listing
+                    if (pathname === '/articles' || pathname === '/articles/') {
+                        try {
+                            const dir = path.join(BASE_DIR, 'articles');
+                            if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()){
+                                const files = fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith('.html')).sort();
+                                // simple HTML listing with anchors so client-side parser can read <a> tags
+                                const items = files.map(f => `<li><a href="${f}">${f}</a></li>`).join('\n');
+                                const html = `<!doctype html><html><head><meta charset="utf-8"><title>Articles</title></head><body><ul>${items}</ul></body></html>`;
+                                res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+                                res.end(html);
+                                return;
+                            }
+                        } catch(e){ /* fallthrough to static handling */ }
+                    }
 
-                // Media list endpoint for admin (returns images under articles/facebook_media)
+                    if (pathname.startsWith('/articles/') || pathname.match(/\.(png|jpg|css|js|mp3)$/)) {
+                        const safePath = path.normalize(pathname).replace(/^(\.{2,}[\/\\])+/, '');
+                        const fullPath = path.join(BASE_DIR, safePath);
+                        const injectSession = pathname.endsWith('.html') ? session : null;
+                        if (fs.existsSync(fullPath)) { serveStatic(res, fullPath, injectSession); return; }
+                    }
+
+                    // Media list endpoint for admin (returns images under articles/facebook_media)
                 if (pathname === '/media-list') {
                     if (!session) { res.writeHead(403); res.end('Forbidden'); return; }
                     try {
