@@ -119,6 +119,12 @@ nav a:hover { color:var(--ink); }
   .article-paper { padding: 40px 24px; }
   .article-title { font-size: 1.6rem; }
 }
+/* Image thumbnails gallery: max 3 per row, click to open full-size */
+.article-content .img-thumb { display:inline-block; width:calc(33.333% - 12px); margin:6px; vertical-align:top; }
+.article-content .img-thumb img { display:block; width:100%; height:auto; border-radius:6px; border:1px solid rgba(0,0,0,0.04); box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+.article-content .img-thumb:hover img { transform:scale(1.02); }
+@media (max-width:900px){ .article-content .img-thumb{ width:calc(50% - 12px); } }
+@media (max-width:520px){ .article-content .img-thumb{ width:calc(100% - 12px); } }
 </style>
 </head>
 <body>
@@ -187,5 +193,26 @@ nav a:hover { color:var(--ink); }
     </footer>
   </article>
 </main>
+
+<script>
+  // Wrap article images as clickable thumbnails that open the original image in a new tab.
+  (function(){
+    try{
+      const content = document.querySelector('.article-content');
+      if(!content) return;
+      const imgs = Array.from(content.querySelectorAll('img'));
+      imgs.forEach(img => {
+        if(img.closest('a')) return; // already linked
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'img-thumb';
+        img.parentNode.insertBefore(a, img);
+        a.appendChild(img);
+      });
+    }catch(e){ console && console.error && console.error(e); }
+  })();
+</script>
 </body>
 </html>
