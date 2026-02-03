@@ -102,6 +102,13 @@ nav a:hover { color:var(--ink); }
 .article-content a { color: var(--water-teal); text-decoration: none; border-bottom: 1px dashed var(--water-teal); }
 .article-content a:hover { border-bottom-style: solid; }
 
+/* 文章导航：上一页 / 下一页 */
+.article-nav { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:36px 0 12px; }
+.article-nav a { padding:10px 14px; background:#fff; border:1px solid rgba(0,0,0,0.06); border-radius:8px; color:var(--water-teal); text-decoration:none; font-weight:600 }
+.article-nav a.prev-link { margin-right:auto; }
+.article-nav a.next-link { margin-left:auto; }
+.article-nav .empty { visibility:hidden; display:inline-block; width:120px }
+
 /* 底部签名区 */
 .article-footer { margin-top: 60px; text-align: center; }
 .stamp {
@@ -137,6 +144,8 @@ nav a:hover { color:var(--ink); }
     <div class="article-content">
       {{CONTENT}}
     </div>
+
+    <nav class="article-nav">{{PREV_LINK}}{{NEXT_LINK}}</nav>
 
     <footer class="article-footer">
       <div class="stamp">Laputan</div>

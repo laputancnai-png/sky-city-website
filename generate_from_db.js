@@ -29,13 +29,18 @@ if (!fs.existsSync(fullArticlesDir)) {
 
 // 1. Fetch Data from DB
 console.log("Fetching articles from DB...");
-const query = `SELECT * FROM articles ORDER BY pub_date DESC;`;
+const query = `SELECT * FROM articles ORDER BY pub_date DESC, id DESC;`;
 const jsonStr = execSync(`sqlite3 ${dbFile} -json "${query.replace(/"/g, '\\"')}"`, { maxBuffer: 1024 * 1024 * 200 }).toString();
 const allItems = JSON.parse(jsonStr || '[]');
 
 // Read Templates
 const articleTemplate = fs.readFileSync(articleTemplateFile, 'utf8');
 const indexTemplate = fs.readFileSync(htmlTemplate, 'utf8');
+
+function escapeHtml(str){
+  if(!str) return '';
+  return String(str).replace(/[&<>\"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+}
 
 let gridHtml = '';
 let timelineData = {}; 
@@ -55,13 +60,21 @@ allItems.forEach((item, index) => {
     if (!timelineData[year]) timelineData[year] = new Set();
     timelineData[year].add(month);
     
-    // Generate Article HTML Page
+    // Generate Article HTML Page - compute prev/next based on current ordering
+    const prevItem = index > 0 ? allItems[index - 1] : null;
+    const nextItem = index < allItems.length - 1 ? allItems[index + 1] : null;
+
+    const prevHtml = prevItem ? `<a class="prev-link" href="${escapeHtml(prevItem.slug)}.html">← ${escapeHtml(prevItem.title)}</a>` : `<span class="empty"></span>`;
+    const nextHtml = nextItem ? `<a class="next-link" href="${escapeHtml(nextItem.slug)}.html">${escapeHtml(nextItem.title)} →</a>` : `<span class="empty"></span>`;
+
     let pageContent = articleTemplate
-        .replace('href="index.html"', 'href="../home.html"') // Back link now points to home.html
-        .replace(/{{TITLE}}/g, item.title)
-        .replace(/{{DATE}}/g, dateStr)
-        .replace(/{{CONTENT}}/g, item.content);
-        
+      .replace('href="index.html"', 'href="../home.html"') // Back link now points to home.html
+      .replace(/{{TITLE}}/g, item.title)
+      .replace(/{{DATE}}/g, dateStr)
+      .replace(/{{CONTENT}}/g, item.content)
+      .replace(/{{PREV_LINK}}/g, prevHtml)
+      .replace(/{{NEXT_LINK}}/g, nextHtml);
+
     fs.writeFileSync(path.join(fullArticlesDir, filename), pageContent);
     
     // Generate Index Card HTML
