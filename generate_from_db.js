@@ -42,6 +42,11 @@ function escapeHtml(str){
   return String(str).replace(/[&<>\"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
 }
 
+function cleanExcerpt(str){
+  if(!str) return '';
+  return String(str).replace(/\bPhotos\b/gi, '').replace(/\s+/g, ' ').trim();
+}
+
 let gridHtml = '';
 let timelineData = {}; 
 
@@ -67,8 +72,10 @@ allItems.forEach((item, index) => {
     const prevHtml = prevItem ? `<a class="prev-link" href="${escapeHtml(prevItem.slug)}.html">← ${escapeHtml(prevItem.title)}</a>` : `<span class="empty"></span>`;
     const nextHtml = nextItem ? `<a class="next-link" href="${escapeHtml(nextItem.slug)}.html">${escapeHtml(nextItem.title)} →</a>` : `<span class="empty"></span>`;
 
-    // Server-side process article content: wrap standalone <img> tags into thumbnail anchors
+    // Server-side process article content: remove stray 'Photos' tokens and wrap standalone <img> tags into thumbnail anchors
     let contentHtml = item.content || '';
+    // remove standalone word 'Photos' (case-insensitive) and collapse repeated whitespace
+    contentHtml = String(contentHtml).replace(/\bPhotos\b/gi, '').replace(/\s+/g, ' ');
 
     // Preserve already-linked images by replacing them with placeholders first
     const linkedPlaceholders = [];
@@ -77,6 +84,9 @@ allItems.forEach((item, index) => {
       linkedPlaceholders.push(match);
       return `__IMG_LINKED_PLACEHOLDER_${idx}__`;
     });
+
+    // Remove visible standalone 'Photos' text nodes like ">Photos<" but avoid changing file paths
+    contentHtml = contentHtml.replace(/>\s*Photos\s*</gi, '><');
 
     // Replace remaining <img ...> with thumbnail-wrapped anchors
     contentHtml = contentHtml.replace(/<img\b([^>]*)>/gi, function(match, attrs){
@@ -109,6 +119,7 @@ allItems.forEach((item, index) => {
     
     // Generate Index Card HTML
     const colorClass = getRandomColor(index);
+    const safeExcerpt = cleanExcerpt(item.excerpt || '');
     gridHtml += `
     <div class="diary-card ${colorClass} reveal" 
          data-year="${year}" 
@@ -117,7 +128,7 @@ allItems.forEach((item, index) => {
       <span class="card-tag">日志</span>
       <div class="card-date">${dateStr}</div>
       <h3 class="card-title">${item.title}</h3>
-      <p class="card-text">${item.excerpt}</p>
+      <p class="card-text">${safeExcerpt}</p>
       <div class="card-watercolor"></div>
     </div>\n`;
 });

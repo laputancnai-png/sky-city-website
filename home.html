@@ -23,7 +23,7 @@
 }
 
 /* container to align header with site */
-.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 0; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 0; position: relative; z-index: 12; }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -287,6 +287,17 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
   font-size: 0.85rem;
   letter-spacing: 0.1em;
 }
+
+/* Ensure header sits above decorative watercolor layers */
+.site-header { position: relative; z-index: 20; background: transparent; display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:18px }
+.site-header .brand { display:flex; align-items:center; gap:14px }
+.site-header .brand img { width:52px; height:52px; object-fit:cover; border-radius:8px; box-shadow:2px 2px 0 rgba(44,36,32,0.06) }
+.site-header .brand h1 { font-size:1.05rem; letter-spacing:0.2em; font-weight:400; margin:0 }
+.site-header nav { display:flex; align-items:center; gap:12px; margin-left:auto; }
+.site-header nav a { color:var(--ink-light); text-decoration:none; margin-left:14px; font-size:0.9rem }
+.site-header nav a:hover { color:var(--ink); }
+.site-header .timeline-btn { background:none; border:none; font-family:var(--font-hand); color:var(--water-teal); cursor:pointer; padding:6px 10px; border-radius:8px; font-size:0.95rem }
+.site-header .timeline-btn:hover { opacity:0.85 }
 .auth-link {
   text-decoration: none;
   color: var(--ink-fade);
@@ -477,7 +488,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2025.06.18</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2025.06.18 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos F1 Place: Almaden Valley, San Jose,...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2025.06.18 Yao Min Shared from Instagram Yao Min Shared from Instagram F1 Place: Almaden Valley, San Jose,...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -488,7 +499,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.12.24</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.24 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.24 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -499,7 +510,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.12.16</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.16 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Click for video:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.16 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -510,7 +521,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.12.01</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.01 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Place:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.12.01 Yao Min Shared from Instagram Yao Min Shared from Instagram Place:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -521,7 +532,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.28</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.28 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.28 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -532,7 +543,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.24</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.24 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Click for video:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.24 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -543,7 +554,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.22</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.22 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.22 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -554,7 +565,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.18</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.18 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Click for video:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.18 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -565,7 +576,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.12</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.12 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.12 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -576,7 +587,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.11.12</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.12 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.11.12 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -587,7 +598,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.10.07</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.10.07 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Click for video:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.10.07 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -598,7 +609,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.09.22</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.22 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos #sandiego #birthday Sep 22,...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.22 Yao Min Shared from Instagram Yao Min Shared from Instagram #sandiego #birthday Sep 22,...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -609,7 +620,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.09.06</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.06 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos #fencing #ontario...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.06 Yao Min Shared from Instagram Yao Min Shared from Instagram #fencing #ontario...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -620,7 +631,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.09.06</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.06 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Click for...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.06 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -631,7 +642,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.09.01</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.01 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.09.01 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -642,7 +653,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.26</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.26 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.26 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -653,7 +664,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.22</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.22 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Place: San Diego,...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.22 Yao Min Shared from Instagram Yao Min Shared from Instagram Place: San Diego,...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -664,7 +675,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.22</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.22 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.22 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -675,7 +686,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.15</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.15 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.15 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -686,7 +697,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.15</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.15 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Click for video: Click for...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.15 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video: Click for...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -697,7 +708,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.12</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.12 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.12 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -708,7 +719,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.08.05</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.05 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.08.05 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -719,7 +730,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.30</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.30 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.30 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -730,7 +741,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.21</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.21 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Place: San Diego, California...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.21 Yao Min Shared from Instagram Yao Min Shared from Instagram Place: San Diego, California...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -741,7 +752,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.15</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.15 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.15 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -774,7 +785,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.10</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -785,7 +796,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.10</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -796,7 +807,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.10</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Click for video:...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Click for video:...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -807,7 +818,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.10</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -818,7 +829,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2023.07.10</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos The last day in BOS 😅...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2023.07.10 Yao Min Shared from Instagram Yao Min Shared from Instagram The last day in BOS 😅...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -840,7 +851,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2021.09.01</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.09.01 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos 阿兵哥东东🤣🤣🤣 Sep 01, 2021 4:15:40...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.09.01 Yao Min Shared from Instagram Yao Min Shared from Instagram 阿兵哥东东🤣🤣🤣 Sep 01, 2021 4:15:40...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -851,7 +862,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2021.02.11</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.02.11 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Happy 🐂...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.02.11 Yao Min Shared from Instagram Yao Min Shared from Instagram Happy 🐂...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -862,7 +873,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2021.01.16</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.01.16 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Photos Photos Photos Photos Photos...</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2021.01.16 Yao Min Shared from Instagram Yao Min Shared from Instagram ...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -873,7 +884,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2020.12.08</div>
       <h3 class="card-title">Yao Min Shared from Instagram</h3>
-      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2020.12.08 Yao Min Shared from Instagram Yao Min Shared from Instagram Photos Dec 08, 2020 4:35:56 am Laputan</p>
+      <p class="card-text">Yao Min Shared from Instagram - 天空之城 返回天空之城 2020.12.08 Yao Min Shared from Instagram Yao Min Shared from Instagram Dec 08, 2020 4:35:56 am Laputan</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -928,7 +939,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2017.09.27</div>
       <h3 class="card-title">Yao Min added 4 new photos.</h3>
-      <p class="card-text">Yao Min added 4 new photos. - 天空之城 返回天空之城 2017.09.27 Yao Min added 4 new photos. Yao Min added 4 new photos. Mobile uploads Mobile uploads Mobile uploads...</p>
+      <p class="card-text">Yao Min added 4 new . - 天空之城 返回天空之城 2017.09.27 Yao Min added 4 new . Yao Min added 4 new . Mobile uploads Mobile uploads Mobile uploads...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -939,7 +950,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2017.09.27</div>
       <h3 class="card-title">Yao Min added 2 new photos.</h3>
-      <p class="card-text">Yao Min added 2 new photos. - 天空之城 返回天空之城 2017.09.27 Yao Min added 2 new photos. Yao Min added 2 new photos. Photos Photos #TeamSharity #CareDeeplyShareFreely...</p>
+      <p class="card-text">Yao Min added 2 new . - 天空之城 返回天空之城 2017.09.27 Yao Min added 2 new . Yao Min added 2 new . #TeamSharity #CareDeeplyShareFreely...</p>
       <div class="card-watercolor"></div>
     </div>
 
@@ -1170,7 +1181,7 @@ footer { text-align: center; padding: 60px 20px; color: var(--ink-fade); font-si
       <span class="card-tag">日志</span>
       <div class="card-date">2011.09.25</div>
       <h3 class="card-title">Yao Min added a new photo.</h3>
-      <p class="card-text">Yao Min added a new photo. - 天空之城 返回天空之城 2011.09.25 Yao Min added a new photo. Yao Min added a new photo. Photos...</p>
+      <p class="card-text">Yao Min added a new photo. - 天空之城 返回天空之城 2011.09.25 Yao Min added a new photo. Yao Min added a new photo. ...</p>
       <div class="card-watercolor"></div>
     </div>
 
