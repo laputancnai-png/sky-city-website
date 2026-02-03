@@ -125,6 +125,11 @@ nav a:hover { color:var(--ink); }
 .article-content .img-thumb:hover img { transform:scale(1.02); }
 @media (max-width:900px){ .article-content .img-thumb{ width:calc(50% - 12px); } }
 @media (max-width:520px){ .article-content .img-thumb{ width:calc(100% - 12px); } }
+/* Gallery container to ensure rows of 3 */
+.article-content .img-gallery{ display:flex; flex-wrap:wrap; gap:12px; margin: 10px -6px; }
+.article-content .img-gallery a.img-thumb{ display:block; flex: 0 0 calc((100% - 24px) / 3); margin:0; }
+@media (max-width:900px){ .article-content .img-gallery a.img-thumb{ flex:0 0 calc((100% - 12px)/2); } }
+@media (max-width:520px){ .article-content .img-gallery a.img-thumb{ flex:0 0 100%; } }
 </style>
 </head>
 <body>
@@ -148,7 +153,7 @@ nav a:hover { color:var(--ink); }
     </header>
 
     <div class="article-content">
-      <img class="_a6_o _3-96" src="facebook_media/Mobileuploads_466104222678/10150110495707679.jpg"/>
+      <a class="img-thumb" href="facebook_media/Mobileuploads_466104222678/10150110495707679.jpg" target="_blank" rel="noopener noreferrer"><img class="_a6_o _3-96" src="facebook_media/Mobileuploads_466104222678/10150110495707679.jpg"/></a>
     </div>
 
     <nav class="article-nav"><a class="prev-link" href="article_fb_20110310_063038_1.html">← Yao Min shared a link.</a><a class="next-link" href="article_fb_20110216_192922_162.html">Yao Min updated his status. →</a></nav>
@@ -158,26 +163,101 @@ nav a:hover { color:var(--ink); }
     </footer>
   </article>
 </main>
+  </main>
 
-<script>
-  // Wrap article images as clickable thumbnails that open the original image in a new tab.
-  (function(){
-    try{
-      const content = document.querySelector('.article-content');
-      if(!content) return;
-      const imgs = Array.from(content.querySelectorAll('img'));
-      imgs.forEach(img => {
-        if(img.closest('a')) return; // already linked
-        const a = document.createElement('a');
-        a.href = img.src;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.className = 'img-thumb';
-        img.parentNode.insertBefore(a, img);
-        a.appendChild(img);
+  <script>
+    (function(){
+      // create lightbox overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      overlay.innerHTML = `
+        <div class="lightbox-inner">
+          <button class="lightbox-close" aria-label="Close">✕</button>
+          <img class="lightbox-img" src="" alt="" />
+          <div class="lightbox-caption"></div>
+        </div>`;
+      document.body.appendChild(overlay);
+
+      const imgEl = overlay.querySelector('.lightbox-img');
+      const capEl = overlay.querySelector('.lightbox-caption');
+      const closeBtn = overlay.querySelector('.lightbox-close');
+
+      function openLightbox(href, alt){ imgEl.src = href; capEl.textContent = alt || ''; overlay.classList.add('visible'); }
+      function closeLightbox(){ overlay.classList.remove('visible'); setTimeout(()=>{ imgEl.src=''; capEl.textContent=''; }, 200); }
+
+      // Click handler: open lightbox when clicking .img-thumb anchors
+      document.addEventListener('click', function(e){
+        const a = e.target.closest && e.target.closest('a.img-thumb');
+        if(!a) return;
+        e.preventDefault();
+        const href = a.href;
+        const img = a.querySelector('img');
+        const alt = img ? (img.alt || img.title || '') : '';
+        openLightbox(href, alt);
       });
-    }catch(e){ console && console.error && console.error(e); }
-  })();
-</script>
+
+      // Close on overlay click or close button
+      overlay.addEventListener('click', function(e){ if(e.target === overlay || e.target === closeBtn) closeLightbox(); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
+      // Ensure article images are wrapped as anchors with class img-thumb (server may already do this)
+      try{
+        const content = document.querySelector('.article-content');
+        if(!content) return;
+          const imgs = Array.from(content.querySelectorAll('img'));
+          imgs.forEach(img => {
+            const existingA = img.closest('a');
+            if(existingA){ existingA.classList.add('img-thumb'); existingA.removeAttribute('target'); return; }
+            const a = document.createElement('a');
+            a.className = 'img-thumb';
+            a.href = img.src;
+            img.parentNode.insertBefore(a, img);
+            a.appendChild(img);
+          });
+
+          // Collect all img-thumb anchors and move them into a single .img-gallery
+          const anchors = Array.from(content.querySelectorAll('a.img-thumb'));
+          if(anchors.length){
+            const gallery = document.createElement('div');
+            gallery.className = 'img-gallery';
+
+            // remember insertion point: before first anchor's top-level ancestor paragraph (if any), else before the first anchor
+            const first = anchors[0];
+            let insertBeforeNode = first;
+            // prefer to insert before the first anchor's parent if it's a paragraph or div
+            const p = first.closest('p,div');
+            if(p && p.parentNode) insertBeforeNode = p;
+
+            // Move anchors into gallery (preserving order)
+            anchors.forEach(a => {
+              // remove any target attribute so lightbox handles clicks
+              a.removeAttribute('target');
+              gallery.appendChild(a);
+            });
+
+            insertBeforeNode.parentNode.insertBefore(gallery, insertBeforeNode);
+
+            // Clean up empty parent paragraphs/divs left behind
+            anchors.forEach(a => {
+              const parent = a.__oldParent || null; // not used but left for compatibility
+            });
+            // remove any empty paragraphs/divs inside content
+            Array.from(content.querySelectorAll('p,div')).forEach(el => {
+              if(el !== gallery && el.childElementCount === 0 && el.textContent.trim() === '') el.remove();
+            });
+          }
+      }catch(err){ console && console.error && console.error(err); }
+    })();
+  </script>
+
+  <style>
+    /* Lightbox styles */
+    .lightbox-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.8);z-index:100000;opacity:0;pointer-events:none;transition:opacity .18s ease}
+    .lightbox-overlay.visible{opacity:1;pointer-events:auto}
+    .lightbox-inner{position:relative;max-width:95vw;max-height:95vh;padding:12px}
+    .lightbox-img{max-width:95vw;max-height:95vh;border-radius:6px;box-shadow:0 18px 60px rgba(0,0,0,0.6);display:block}
+    .lightbox-close{position:absolute;top:-14px;right:-14px;background:#fff;border-radius:50%;border:none;padding:6px 8px;cursor:pointer;font-size:14px}
+    .lightbox-caption{margin-top:8px;text-align:center;color:#fff;font-size:0.95rem}
+  </style>
 </body>
 </html>

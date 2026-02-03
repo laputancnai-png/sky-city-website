@@ -67,11 +67,41 @@ allItems.forEach((item, index) => {
     const prevHtml = prevItem ? `<a class="prev-link" href="${escapeHtml(prevItem.slug)}.html">← ${escapeHtml(prevItem.title)}</a>` : `<span class="empty"></span>`;
     const nextHtml = nextItem ? `<a class="next-link" href="${escapeHtml(nextItem.slug)}.html">${escapeHtml(nextItem.title)} →</a>` : `<span class="empty"></span>`;
 
+    // Server-side process article content: wrap standalone <img> tags into thumbnail anchors
+    let contentHtml = item.content || '';
+
+    // Preserve already-linked images by replacing them with placeholders first
+    const linkedPlaceholders = [];
+    contentHtml = contentHtml.replace(/<a\b[^>]*>\s*(<img\b[^>]*>)\s*<\/a>/gi, function(match){
+      const idx = linkedPlaceholders.length;
+      linkedPlaceholders.push(match);
+      return `__IMG_LINKED_PLACEHOLDER_${idx}__`;
+    });
+
+    // Replace remaining <img ...> with thumbnail-wrapped anchors
+    contentHtml = contentHtml.replace(/<img\b([^>]*)>/gi, function(match, attrs){
+      // extract src
+      const srcMatch = attrs.match(/src\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+))/i);
+      const src = srcMatch ? (srcMatch[1] || srcMatch[2] || srcMatch[3]) : null;
+      if(!src) return match;
+
+      // remove width/height attributes to allow responsive sizing
+      const cleanedAttrs = attrs.replace(/\s*(width|height)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]*)/gi, '');
+
+      const imgTag = `<img${cleanedAttrs}>`;
+      return `<a class="img-thumb" href="${escapeHtml(src)}" target="_blank" rel="noopener noreferrer">${imgTag}</a>`;
+    });
+
+    // restore previously linked images
+    contentHtml = contentHtml.replace(/__IMG_LINKED_PLACEHOLDER_(\d+)__/g, function(m, idx){
+      return linkedPlaceholders[Number(idx)] || '';
+    });
+
     let pageContent = articleTemplate
       .replace('href="index.html"', 'href="../home.html"') // Back link now points to home.html
       .replace(/{{TITLE}}/g, item.title)
       .replace(/{{DATE}}/g, dateStr)
-      .replace(/{{CONTENT}}/g, item.content)
+      .replace(/{{CONTENT}}/g, contentHtml)
       .replace(/{{PREV_LINK}}/g, prevHtml)
       .replace(/{{NEXT_LINK}}/g, nextHtml);
 
