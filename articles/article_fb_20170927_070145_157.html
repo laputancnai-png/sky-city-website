@@ -95,8 +95,9 @@ nav a:hover { color:var(--ink); }
 .article-content {
   font-size: 1.06rem; line-height: 1.85; color: var(--ink-light); font-weight: 300; text-align: justify; padding-top: 6px; padding-bottom: 6px;
 }
-.article-content > a.img-thumb:first-child { display:block; margin: 0 auto 18px; max-width: 720px; }
-.article-content img { display:block; width:100%; height:auto; object-fit:cover; }
+.article-content > a.img-thumb:first-child { display:block; margin: 0 auto 18px; max-width: 420px; }
+.article-content .img-thumb { display:inline-block; width:calc(50% - 12px); margin:6px; vertical-align:top; }
+.article-content .img-thumb img { display:block; width:100%; height:auto; border-radius:6px; border:1px solid rgba(0,0,0,0.04); box-shadow:0 6px 18px rgba(0,0,0,0.06); }
 .article-content p { margin-bottom: 24px; }
 .article-content strong { font-weight: 600; color: var(--ink); }
 .article-content blockquote { border-left: 3px solid var(--water-blue); padding-left: 18px; margin: 30px 0; color: var(--ink-fade); font-style: italic; }
