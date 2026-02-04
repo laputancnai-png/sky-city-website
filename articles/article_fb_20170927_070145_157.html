@@ -95,8 +95,9 @@ nav a:hover { color:var(--ink); }
 .article-content {
   font-size: 1.06rem; line-height: 1.85; color: var(--ink-light); font-weight: 300; text-align: justify; padding-top: 6px; padding-bottom: 6px;
 }
-.article-content > a.img-thumb:first-child { display:block; margin: 0 auto 18px; max-width: 420px; }
-.article-content .img-thumb { display:inline-block; width:calc(50% - 12px); margin:6px; vertical-align:top; }
+.article-content .img-gallery { display:flex; flex-wrap:wrap; gap:12px; justify-content:flex-start; }
+.article-content .img-thumb { display:inline-block; width:calc((100% - 36px)/3); margin:6px 0; box-sizing:border-box; vertical-align:top; }
+.article-content .img-thumb a { display:block; }
 .article-content .img-thumb img { display:block; width:100%; height:auto; border-radius:6px; border:1px solid rgba(0,0,0,0.04); box-shadow:0 6px 18px rgba(0,0,0,0.06); }
 .article-content p { margin-bottom: 24px; }
 .article-content strong { font-weight: 600; color: var(--ink); }
@@ -156,7 +157,9 @@ nav a:hover { color:var(--ink); }
     </header>
 
     <div class="article-content">
-      <a class="img-thumb" href="facebook_media/Mobileuploads_466104222678/10155762556372679.jpg" target="_blank" rel="noopener noreferrer"><img class="_a6_o _3-96" src="facebook_media/Mobileuploads_466104222678/10155762556372679.jpg"/></a>
+      <div class="img-gallery">
+        <a class="img-thumb" href="facebook_media/Mobileuploads_466104222678/10155762556372679.jpg" rel="noopener noreferrer"><img class="_a6_o _3-96" src="facebook_media/Mobileuploads_466104222678/10155762556372679.jpg"/></a>
+      </div>
     </div>
 
     <nav class="article-nav"><a class="prev-link" href="article_fb_20171002_200512_164.html">← Yao Min wrote on Ritesh Joshi's profile.</a><a class="next-link" href="article_fb_20170927_064042_158.html">Yao Min added 2 new photos. →</a></nav>
